@@ -27,7 +27,7 @@ function IndexPage(props: PageProps) {
     gsap.to(nameNode.current, 0.6, {
       // delay: ,
       x: x * 30,
-      y: y * 30, 
+      y: y * 30,
       // rotationY: x * 100,
       // rotationX: -y * 100,
       ease: "power4.easeOut",
@@ -50,11 +50,18 @@ function IndexPage(props: PageProps) {
     window.addEventListener("mousemove", updateMousePosition);
   }, []);
 
-  const bg = useStaticQuery(graphql`
+  const images = useStaticQuery(graphql`
     query {
-      indexImage: file(relativePath: { eq: "bg.jpg" }) {
+      background: file(relativePath: { eq: "bg.jpg" }) {
         childImageSharp {
           fluid(quality: 100, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      profile: file(relativePath: { eq: "profile-pic.jpg" }) {
+        childImageSharp {
+          fluid(quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -67,7 +74,7 @@ function IndexPage(props: PageProps) {
       <Header />
       <BackgroundImage
         className="bg-image"
-        fluid={bg.indexImage.childImageSharp.fluid}
+        fluid={images.background.childImageSharp.fluid}
       >
         <div
           onMouseMove={event => rotateNameonMouse(event, nameRef)}
@@ -75,6 +82,22 @@ function IndexPage(props: PageProps) {
         >
           <div ref={nameRef} className="name-title">
             <h1>Arif Bashar</h1>
+          </div>
+          <div className="info-card">
+            <div className="profile-pic">
+              <Img fluid={images.profile.childImageSharp.fluid} />
+            </div>
+            <div className="info">
+              <div className="bullet">
+                <div className="card-subhead">Currently</div>
+                <div className="description">
+                  <p>
+                    Learning about NLP and building applications in React and
+                    React Native
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </BackgroundImage>
