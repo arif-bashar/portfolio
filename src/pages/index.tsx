@@ -34,10 +34,10 @@ function IndexPage(props: PageProps) {
     }
   };
   const wheelHandler = (event: WheelEvent) => {
-    if (event.deltaY >= 1) {
+    if (event.deltaY >= 5) {
       setCurrentSlide(1);
       if (!nameRevealed) setNamedRevealed(true);
-    } else if (event.deltaY < 1) {
+    } else if (event.deltaY <= -1) {
       setCurrentSlide(0);
     }
   };

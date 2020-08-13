@@ -6,18 +6,27 @@ type HeaderProps = {
 };
 
 function Header(props: HeaderProps) {
-
   const [logoHovered, setLogoHovered] = React.useState(false);
 
   const logoStyleProps = {
-    color: "white"
-  }
+    color: "white",
+  };
 
   // Makes the mouse cursor bigger when hovering over nav links
   const onHoverLinks = () => {
     props.mouseCursor.current?.classList.add("cursor-grow");
-    setLogoHovered(true);
+  };
 
+  // Makes the mouse cursor bigger and changes logo text color when hovering over logo
+  const onHoverLogo = () => {
+    props.mouseCursor.current?.classList.add("cursor-grow");
+    setLogoHovered(true);
+  };
+
+  // Removes the cursor growth and changes logo text color back to its original
+  const onLeaveLogo = () => {
+    props.mouseCursor.current?.classList.remove("cursor-grow");
+    setLogoHovered(false);
   };
 
   // Removes the cursor growth effect after no longer hovering on nav links
@@ -31,7 +40,12 @@ function Header(props: HeaderProps) {
       <div className="container">
         <div className="inner-header">
           <div className="logo">
-            <Link  style={ logoHovered ? logoStyleProps : undefined } onMouseLeave={onLeaveLinks} onMouseOver={onHoverLinks} to="/">
+            <Link
+              style={logoHovered ? logoStyleProps : undefined}
+              onMouseLeave={onLeaveLogo}
+              onMouseOver={onHoverLogo}
+              to="/"
+            >
               Arif Bashar.
             </Link>
             Software Engineer
