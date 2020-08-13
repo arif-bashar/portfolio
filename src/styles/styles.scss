@@ -1,3 +1,5 @@
+@import "../breakpoints/breakpoints.scss";
+
 $font: "Akkurat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
   Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
@@ -18,27 +20,32 @@ body {
   font-size: 16px;
   padding: 0;
   margin: 0;
-  // background: black;
-  // url("../images/bg.jpg");
+  width: 100vw;
+  height: 100vh;
+  cursor: none;
 }
 
-.container {
-  width: 1640px;
-  min-width: 1640px;
-  margin: 0 auto;
-  @media (max-width: 1440px) {
-    width: 1280px;
-    min-width: 1280px;
-  }
-  @media (max-width: 1280px) {
-    width: 976px;
-    min-width: 976px;
-  }
-  @media (max-width: 976px) {
-    width: 768px;
-    min-width: 768px;
-  }
+// Cursor
+.cursor {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid $accent;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  transition-property: background, transform;
+  transform-origin: 100% 100%;
+  z-index: 11;
 }
+
+.cursor-grow {
+  transform: scale(2);
+  background: $accent;
+  z-index: 9;
+}
+
 
 // Header
 header {
@@ -61,6 +68,9 @@ header {
         color: $accent;
         margin-right: 15px;
         margin-left: 80px;
+        @include media("<=desktop") {
+          margin-left: 20px;
+        }
       }
     }
     .navigation {
@@ -71,6 +81,12 @@ header {
           font-weight: $bold;
           color: $inactiveLinks;
           transition: 0.3s ease-in-out;
+          @include media("<=desktop") {
+            margin: 0 20px;
+          }
+          // &:last-child {
+          //   margin-right: 0px;
+          // }
           &:hover {
             color: $white;
           }
@@ -87,68 +103,140 @@ header {
   }
 }
 
-.bg-image {
+
+.background-image {
+  position: absolute;
   width: 100vw;
   height: 100vh;
+  opacity: 1 !important;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-image: linear-gradient(
+    180.02deg,
+    rgba(254, 175, 160, 0.85) 61%,
+    rgba(57, 137, 146, 0.85) 65%
+  );
+  background-size: cover;
 
-  .gradient-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(180.02deg, $daySky 61%, $accent 66.5%);
-    background-size: cover;
-    background-position: center;
-    opacity: 0.9;
+  .main-container {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
 
-    .name-title {
-      h1 {
-        font-family: "Cerebri Sans";
-        color: $accent;
-        font-size: 6em;
-        font-weight: $bold;
-        text-shadow: 0px 16px $dayShadow;
-        // z-index: 9;
+    // Slide1
+    .slide-1 {
+      display: flex;
+      // border: solid 20px red;
+      // position: absolute;
+      width: 100%;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      // z-index: 9;
+      .name-title {
+        h1 {
+          font-family: "Cerebri Sans";
+          color: $accent;
+          font-size: 6em;
+          font-weight: $bold;
+          text-shadow: 0px 16px $dayShadow;
+        }
       }
     }
 
-    .info-card {
-      position: absolute;
-      height: 340px;
-      width: 735px;
-      background: $white;
+    // Slide 2
+    .slide-2 {
+      // border: solid 20px green;
+      // background: green;
       display: flex;
-      flex-direction: column;
+      width: 100%;
+      min-height: 100vh;
       justify-content: center;
-      align-items: space-between;
-      // z-index: 2;
-
-      .profile-pic {
-        width: 140px;
-        height: 140px;
-        border: 7px solid rgba(193, 193, 193, 0.4);
-        border-radius: 50%;
-        img {
-          width: 124px;
-          height: 124px;
-          border-radius: 50%;
-          // outline: rgba(193, 193, 193, 0.4);
-        }
-      }
-
-      .info {
+      align-items: center;
+      .info-card {
+        // display: none;
+        // position: absolute;
+        height: 340px;
+        width: 735px;
+        background: $white;
         display: flex;
-        .bullet
-        .card-subhead {
-          font-family: "Cerebri Sans";
-          font-size: 18px;
-          color: $grayLabel;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 1;
+        z-index: 9;
+
+        .profile-pic {
+          width: 140px;
+          height: 140px;
+          border: 7px solid rgba(193, 193, 193, 0.4);
+          border-radius: 50%;
+          margin-left: 70px;
+          img {
+            border-radius: 50%;
+            // outline: rgba(193, 193, 193, 0.4);
+          }
+        }
+
+        .info-section {
+          display: flex;
+          flex-direction: column;
+          margin-right: 95px;
+
+          .bullet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .card-subhead {
+              font-family: "Cerebri Sans";
+              font-size: 18px;
+              font-weight: $bold;
+              color: $grayLabel;
+            }
+
+            .description {
+              margin-left: 50px;
+              width: 240px;
+              font-size: 18px;
+              font-weight: $bold;
+              color: $accent;
+            }
+          }
         }
       }
     }
   }
 }
+
+//   .content-wrapper {
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     height: 100vh;
+//     overflow-y: scroll;
+//     // justify-content: center;
+//     // align-items: center;
+//     z-index: 9;
+
+//     .slide-1 {
+//       background: red;
+//       display: flex;
+//       width: 100%;
+//       min-height: 100vh;
+//       justify-content: center;
+//       align-items: center;
+//       z-index: 9;
+//       .name-title {
+//         // background: red;
+//         // z-index: 9;
+//         h1 {
+//           font-family: "Cerebri Sans";
+//           color: $accent;
+//           font-size: 6em;
+//           font-weight: $bold;
+//           text-shadow: 0px 16px $dayShadow;
+//         }
+//       }
+//     }
