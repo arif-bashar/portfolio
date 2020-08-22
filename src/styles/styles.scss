@@ -6,9 +6,12 @@ $font: "Akkurat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
 // Color Variables
 $daySky: #feafa0;
 $dayShadow: rgba(255, 0, 0, 0.1);
-$accent: #398992;
+$primary: #221C47;
+$secondary: #AFA1FF;
+$accent: #504CFF;
+$navyish: #343a50;
 $white: #fff;
-$inactiveLinks: rgba(255, 255, 255, 0.7);
+$inactiveLinks: #AFA1FF;
 $grayLabel: rgba(112, 112, 112, 0.5);
 
 // Font variables
@@ -23,6 +26,7 @@ body {
   width: 100vw;
   height: 100vh;
   cursor: none;
+  background: $primary;
 }
 
 // Cursor
@@ -45,7 +49,6 @@ body {
   background: $accent;
   z-index: 9;
 }
-
 
 // Header
 header {
@@ -71,6 +74,10 @@ header {
         @include media("<=desktop") {
           margin-left: 20px;
         }
+      }
+
+      .hovered-logo {
+        color: $white;
       }
     }
     .navigation {
@@ -104,139 +111,10 @@ header {
 }
 
 
-.background-image {
+.main-container {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
-  opacity: 1 !important;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(
-    180.02deg,
-    rgba(254, 175, 160, 0.85) 61%,
-    rgba(57, 137, 146, 0.85) 65%
-  );
-  background-size: cover;
+  overflow: hidden;
 
-  .main-container {
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-
-    // Slide1
-    .slide-1 {
-      display: flex;
-      // border: solid 20px red;
-      // position: absolute;
-      width: 100%;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-      // z-index: 9;
-      .name-title {
-        h1 {
-          font-family: "Cerebri Sans";
-          color: $accent;
-          font-size: 6em;
-          font-weight: $bold;
-          text-shadow: 0px 16px $dayShadow;
-        }
-      }
-    }
-
-    // Slide 2
-    .slide-2 {
-      // border: solid 20px green;
-      // background: green;
-      display: flex;
-      width: 100%;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-      .info-card {
-        // display: none;
-        // position: absolute;
-        height: 340px;
-        width: 735px;
-        background: $white;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        opacity: 1;
-        z-index: 9;
-
-        .profile-pic {
-          width: 140px;
-          height: 140px;
-          border: 7px solid rgba(193, 193, 193, 0.4);
-          border-radius: 50%;
-          margin-left: 70px;
-          img {
-            border-radius: 50%;
-            // outline: rgba(193, 193, 193, 0.4);
-          }
-        }
-
-        .info-section {
-          display: flex;
-          flex-direction: column;
-          margin-right: 95px;
-
-          .bullet {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-
-            .card-subhead {
-              font-family: "Cerebri Sans";
-              font-size: 18px;
-              font-weight: $bold;
-              color: $grayLabel;
-            }
-
-            .description {
-              margin-left: 50px;
-              width: 240px;
-              font-size: 18px;
-              font-weight: $bold;
-              color: $accent;
-            }
-          }
-        }
-      }
-    }
-  }
 }
-
-//   .content-wrapper {
-//     display: flex;
-//     flex-direction: column;
-//     width: 100%;
-//     height: 100vh;
-//     overflow-y: scroll;
-//     // justify-content: center;
-//     // align-items: center;
-//     z-index: 9;
-
-//     .slide-1 {
-//       background: red;
-//       display: flex;
-//       width: 100%;
-//       min-height: 100vh;
-//       justify-content: center;
-//       align-items: center;
-//       z-index: 9;
-//       .name-title {
-//         // background: red;
-//         // z-index: 9;
-//         h1 {
-//           font-family: "Cerebri Sans";
-//           color: $accent;
-//           font-size: 6em;
-//           font-weight: $bold;
-//           text-shadow: 0px 16px $dayShadow;
-//         }
-//       }
-//     }
