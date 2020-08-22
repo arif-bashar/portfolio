@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { graphql, useStaticQuery } from "gatsby";
 import { DotGrid } from "../SvgIcons";
 import Tag from "../Tag";
+import SectionNumber from "../SectionNumber";
 
 function AboutSection() {
   const images = useStaticQuery(graphql`
@@ -24,15 +25,7 @@ function AboutSection() {
       <div className="inner-container">
         <div className="left-section">
           <div className="top-section">
-            <div className="number-container">
-              <div className="square"></div>
-              <div className="number">
-                <strong>01</strong>
-              </div>
-              <div className="dot-grid-svg">
-                <DotGrid />
-              </div>
-            </div>
+            <SectionNumber num="01" />
             <h2>About Me</h2>
           </div>
           <div className="mid-section">
@@ -42,9 +35,9 @@ function AboutSection() {
               <br></br>
               <br></br>
               I’ve been designing things since I was 13, so I’ve always had a
-              fixation for designing anything visual related as
-              beautiful as I could. Ever since I started programming, I knew I
-              wanted to use those skills to bring my designs to life.
+              fixation for designing anything visual related as beautiful as I
+              could. Ever since I started programming, I knew I wanted to use
+              those skills to bring my designs to life.
               <br></br>
               <br></br>
               In my free time, I’ve been learning to build applications in React

@@ -377,7 +377,20 @@ main {
         }
 
         .mid-section {
+          width: 400px;
+          display: flex;
+          flex-direction: row;
+          // background: red;
+          margin-bottom: 26px;
+          cursor: grab;
+          overflow-x: scroll;
+          -ms-overflow-style: none;  /* Internet Explorer 10+ */
+          scrollbar-width: none;  /* Firefox */
         }
+
+        .mid-section::-webkit-scrollbar { 
+          display: none;  /* Safari and Chrome */
+      }
 
         .bottom-section {
           width: 595px;
@@ -427,3 +440,23 @@ footer {
     }
   }
 }
+
+// Components
+
+// Menu Button Component
+.menu-button {
+  display: inline;
+  font-size: 14px;
+  font-weight: $regular;
+  color: $white;
+  background: $accent;
+  border-radius: 5px;
+  padding: 8px 14px;
+  margin-right: 18px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background: $accent;
+  }
+}
+
