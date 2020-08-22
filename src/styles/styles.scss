@@ -115,6 +115,7 @@ main {
   height: 100%;
   position: absolute;
 
+  // Welcome Section
   .welcome-section {
     display: flex;
     width: 100%;
@@ -153,6 +154,8 @@ main {
     }
   }
 
+
+  // About Section
   .about-section {
     display: flex;
     width: 100%;
@@ -237,7 +240,6 @@ main {
         .bottom-section {
           display: flex;
           width: 400px;
-          // justify-content: space-around;
           flex-wrap: wrap;
 
           .tag {
@@ -254,10 +256,34 @@ main {
       }
 
       .right-section {
+        margin-left: 20px;
+        top: 50px;
         width: 272px;
         height: 272px;
-        background: red;
         position: relative;
+
+        .image-filter {
+          width: 224px;
+          height: 224px;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          border-radius: 50%;
+          background: rgba(113, 88, 255, .42);
+          z-index: 2;
+        }
+
+        .profile-pic {
+          width: 224px;
+          height: 224px;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+
+          img {
+            border-radius: 50%;
+          }
+        }
 
         .circle {
           width: 100%;
@@ -267,14 +293,9 @@ main {
           border-radius: 50%;
         }
 
-        .profile-pic {
-          width: 224px;
-          height: 224px;
-          position: absolute;
-          bottom: 0px;
-          left: 0px;
-          border-radius: 50%;
-        }
+
+
+
       }
     }
   }

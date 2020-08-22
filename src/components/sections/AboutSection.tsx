@@ -39,12 +39,14 @@ function AboutSection() {
             <p>
               Hi there! I’m still a student in my final semester of college, on
               the grind to earn my degree in Computer Science.
-              <br></br><br></br>
+              <br></br>
+              <br></br>
               I’ve been designing things since I was 13, so I’ve always had a
               natural fixation for designing anything visual related as
               beautiful as I could. Ever since I started programming, I knew I
               wanted to use those skills to bring my designs to life.
-              <br></br><br></br>
+              <br></br>
+              <br></br>
               In my free time, I’ve been learning to build applications in React
               and React Native. While my main focus has been in React, I’ve also
               been dabbling in NLP and using it to reinforce some of the
@@ -61,7 +63,10 @@ function AboutSection() {
         </div>
         <div className="right-section">
           <div className="circle"></div>
-          <Img className="profile-pic" fluid={images.profile.childImageSharp.fluid} />
+          <div className="image-filter"></div>
+          <div className="profile-pic">
+            <Img fluid={images.profile.childImageSharp.fluid} />
+          </div>
         </div>
       </div>
     </div>
