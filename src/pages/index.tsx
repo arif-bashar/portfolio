@@ -6,11 +6,13 @@ import Img from "gatsby-image";
 import gsap, { TimelineMax } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import WelcomeSection from "../components/sections/WelcomeSection";
-import Slide2 from "../components/sections/Slide2";
+import Slide2 from "../components/sections/AboutSection";
 
 // Components
 import Header from "../components/header";
+import Footer from "../components/footer";
 import Image from "../components/image";
+import AboutSection from "../components/sections/AboutSection";
 
 function IndexPage(props: PageProps) {
   let containerRef = useRef<HTMLDivElement>(null);
@@ -22,15 +24,6 @@ function IndexPage(props: PageProps) {
   const slidingTL = useMemo(() => gsap.timeline({ paused: true }), []);
 
   let isScrolling: NodeJS.Timeout;
-
-  const slides = [
-    {
-      src: <WelcomeSection currentSlide={currentSlide} />,
-    },
-    {
-      src: <Slide2 />,
-    },
-  ];
 
   const mouseCursorHandler = (event: MouseEvent) => {
     if (mouseCursor.current != null) {
@@ -63,8 +56,11 @@ function IndexPage(props: PageProps) {
     <>
       <div ref={mouseCursor} className="cursor"></div>
       <Header mouseCursor={mouseCursor} />
-      <div className="main-container" ref={containerRef}>
-      </div>
+      <main ref={containerRef}>
+        <WelcomeSection />
+        <AboutSection />
+      </main>
+      <Footer mouseCursor={mouseCursor}/>
     </>
   );
 }

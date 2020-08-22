@@ -37,37 +37,42 @@ function Header(props: HeaderProps) {
 
   return (
     <header>
-      <div className="container">
-        <div className="inner-header">
-          <div className="logo">
+      <div className="inner-header">
+        <div className="logo">
+          <Link
+            style={logoHovered ? logoStyleProps : undefined}
+            onMouseLeave={onLeaveLogo}
+            onMouseOver={onHoverLogo}
+            to="/"
+          >
+            Arif Bashar.
+          </Link>
+          Software Engineer
+        </div>
+        <div className="navigation">
+          <nav>
             <Link
-              style={logoHovered ? logoStyleProps : undefined}
-              onMouseLeave={onLeaveLogo}
-              onMouseOver={onHoverLogo}
-              to="/"
+              onMouseLeave={onLeaveLinks}
+              onMouseOver={onHoverLinks}
+              to="/#about"
             >
-              Arif Bashar.
+              About
             </Link>
-            Software Engineer
-          </div>
-          <div className="navigation">
-            <nav>
-              <Link
-                onMouseLeave={onLeaveLinks}
-                onMouseOver={onHoverLinks}
-                to="/projects"
-              >
-                Projects
-              </Link>
-              <Link
-                onMouseLeave={onLeaveLinks}
-                onMouseOver={onHoverLinks}
-                to="/contact"
-              >
-                Contact
-              </Link>
-            </nav>
-          </div>
+            <Link
+              onMouseLeave={onLeaveLinks}
+              onMouseOver={onHoverLinks}
+              to="/#experience"
+            >
+              Experience
+            </Link>
+            <Link
+              onMouseLeave={onLeaveLinks}
+              onMouseOver={onHoverLinks}
+              to="/#projects"
+            >
+              Projects
+            </Link>
+          </nav>
         </div>
       </div>
     </header>

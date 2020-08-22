@@ -1,17 +1,17 @@
 @import "../breakpoints/breakpoints.scss";
 
-$font: "Akkurat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+$font: "Akkurat", "Cerebri Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
 // Color Variables
 $daySky: #feafa0;
 $dayShadow: rgba(255, 0, 0, 0.1);
-$primary: #221C47;
-$secondary: #AFA1FF;
-$accent: #504CFF;
+$primary: #221c47;
+$secondary: #afa1ff;
+$accent: #504cff;
 $navyish: #343a50;
 $white: #fff;
-$inactiveLinks: #AFA1FF;
+$inactiveLinks: #afa1ff;
 $grayLabel: rgba(112, 112, 112, 0.5);
 
 // Font variables
@@ -25,6 +25,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
   cursor: none;
   background: $primary;
 }
@@ -61,7 +62,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 100%;
     .logo {
       font-weight: $bold;
       color: $inactiveLinks;
@@ -91,9 +92,7 @@ header {
           @include media("<=desktop") {
             margin: 0 20px;
           }
-          // &:last-child {
-          //   margin-right: 0px;
-          // }
+
           &:hover {
             color: $white;
           }
@@ -110,11 +109,83 @@ header {
   }
 }
 
-
-.main-container {
+main {
   width: 100%;
   height: 100%;
   position: absolute;
-  overflow: hidden;
 
+  .welcome-section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .browser-content {
+      position: relative;
+      width: 502px;
+      height: 223px;
+      left: -90px;
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+      font-family: "Cerebri Sans";
+      h1 {
+        font-size: 5.6em;
+        color: $accent;
+      }
+      em {
+        font-size: 14px;
+        color: $secondary;
+        margin-top: -2.5em;
+      }
+      p {
+        color: $secondary;
+        margin-top: 1em;
+      }
+    }
+
+    .browser-svg {
+      position: absolute;
+    }
+  }
+
+  .about-section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+footer {
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+  a {
+    margin-left: 80px;
+    text-decoration: none;
+    font-weight: $bold;
+    color: $inactiveLinks;
+    transition: 0.3s ease-in-out;
+    @include media("<=desktop") {
+      margin: 0 20px;
+    }
+    // &:last-child {
+    //   margin-right: 0px;
+    // }
+    &:hover {
+      color: $white;
+    }
+    &:hover:after {
+      content: "•";
+      color: #ff8282;
+      position: absolute;
+      margin-left: 5px;
+      transition: 0.3s ease-in-out;
+    }
+  }
 }

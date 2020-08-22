@@ -3,17 +3,12 @@ import React, {
   useEffect,
   useState,
   useMemo,
-  SetStateAction,
 } from "react";
 import gsap from "gsap";
 import { Transition } from "react-transition-group";
-import Hello from "../Hello";
+import { BrowserMock } from "../SvgIcons";
 
-type SlideProps = {
-  currentSlide: number;
-};
-
-function WelcomeSection(props: SlideProps) {
+function WelcomeSection() {
   let nameRef = useRef<HTMLDivElement>(null);
   let helloRef = useRef<SVGSVGElement | null>(null);
   let pathRef = useRef<SVGPathElement | null>(null);
@@ -139,8 +134,17 @@ function WelcomeSection(props: SlideProps) {
       className="welcome-section"
       onMouseMove={event => moveNameonMouse(event, nameRef)}
     >
-      <div ref={nameRef} className="name-title">
-      
+      <div className="browser-content">
+        <h1>Arif Bashar.</h1>
+        <em>ah-reef &nbsp; &nbsp; bah-shar</em>
+        <p>
+          A human being (not a robot &#128559;) who took 3.5 years to become a software
+          engineer and realized that he really likes designing and building
+          beautiful applications in React and React Native.
+        </p>
+      </div>
+      <div className="browser-svg">
+        <BrowserMock />
       </div>
     </div>
   );

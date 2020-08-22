@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 export function BrowserMock(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -75,5 +75,5 @@ export function BrowserMock(props: React.SVGProps<SVGSVGElement>) {
         </filter>
       </defs>
     </svg>
-  )
+  );
 }
