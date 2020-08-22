@@ -6,9 +6,9 @@ $font: "Akkurat", "Cerebri Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
 // Color Variables
 $primary: #221c47;
 $secondary: #afa1ff;
-$tertiary: #2D255B;
+$tertiary: #2d255b;
 $accent: #504cff;
-$numberColor: #FFE600;
+$numberColor: #ffe600;
 $white: #fff;
 $inactiveLinks: #afa1ff;
 
@@ -151,9 +151,22 @@ main {
 
     .browser-svg {
       position: absolute;
+
+      .floating-rectangle {
+        width: 335px;
+        height: 250px;
+        background: $accent;
+        opacity: 0.1;
+        background-blend-mode: exclusion;
+        filter: blur(2px);
+        position: absolute;
+        right: -80px;
+        bottom: -80px;
+        z-index: 3;
+        border-radius: 5px;
+      }
     }
   }
-
 
   // About Section
   .about-section {
@@ -162,7 +175,6 @@ main {
     height: 100%;
     justify-content: center;
     align-items: center;
-
 
     .inner-container {
       display: flex;
@@ -181,7 +193,7 @@ main {
             height: 39px;
             position: relative;
             margin-right: 20px;
-            
+
             .square {
               width: 30px;
               height: 30px;
@@ -211,8 +223,6 @@ main {
                 z-index: 3;
               }
             }
-
-
 
             .dot-grid-svg {
               width: 30px;
@@ -269,7 +279,7 @@ main {
           bottom: 0px;
           left: 0px;
           border-radius: 50%;
-          background: rgba(113, 88, 255, .42);
+          background: rgba(113, 88, 255, 0.42);
           z-index: 2;
         }
 
@@ -292,17 +302,103 @@ main {
           background: $tertiary;
           border-radius: 50%;
         }
-
-
-
-
       }
     }
   }
 
+  // Experience Section
+  .experience-section {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .inner-container {
+      display: flex;
+      flex-direction: row;
+
+      .left-section {
+        display: flex;
+        flex-direction: column;
+
+        .top-section {
+          display: flex;
+          flex-direction: row;
+
+          .number-container {
+            width: 39px;
+            height: 39px;
+            position: relative;
+            margin-right: 20px;
+
+            .square {
+              width: 30px;
+              height: 30px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: absolute;
+              bottom: 0px;
+              left: 0px;
+              background: $accent;
+              background-blend-mode: difference;
+            }
+
+            .number {
+              width: 30px;
+              height: 30px;
+              display: flex;
+              position: absolute;
+              bottom: 0px;
+              left: 0px;
+              justify-content: center;
+              align-items: center;
+              strong {
+                font-size: 1em;
+                opacity: 1;
+                color: $numberColor;
+                z-index: 3;
+              }
+            }
+
+            .dot-grid-svg {
+              width: 30px;
+              height: 30px;
+              position: absolute;
+              right: 0px;
+            }
+          }
+
+          h2 {
+            font-size: 3.1em;
+            color: $accent;
+          }
+        }
+
+        .mid-section {
+        }
+
+        .bottom-section {
+          width: 595px;
+
+          p {
+            font-weight: $regular;
+            font-size: 1em;
+            color: $secondary;
+          }
+        }
+
+        .right-section {
+        }
+      }
+    }
+
+    // Projects Section
+    .projects-section {
+    }
+  }
 }
-
-
 
 footer {
   height: 80px;
@@ -319,9 +415,6 @@ footer {
     @include media("<=desktop") {
       margin: 0 20px;
     }
-    // &:last-child {
-    //   margin-right: 0px;
-    // }
     &:hover {
       color: $white;
     }

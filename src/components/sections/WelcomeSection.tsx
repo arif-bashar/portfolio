@@ -1,9 +1,4 @@
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  useMemo,
-} from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import gsap from "gsap";
 import { Transition } from "react-transition-group";
 import { BrowserMock } from "../SvgIcons";
@@ -138,12 +133,13 @@ function WelcomeSection() {
         <h1>Arif Bashar.</h1>
         <em>ah-reef &nbsp; &nbsp; bah-shar</em>
         <p>
-          A human being (not a robot &#128559;) who took 3.5 years to become a software
-          engineer and realized that he really likes designing and building
-          beautiful applications in React and React Native.
+          A human being (not a robot &#128559;) who took 3.5 years to become a
+          software engineer and realized that he really likes designing and
+          building beautiful applications in React and React Native.
         </p>
       </div>
       <div className="browser-svg">
+        <div className="floating-rectangle"></div>
         <BrowserMock />
       </div>
     </div>

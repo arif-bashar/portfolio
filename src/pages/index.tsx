@@ -13,6 +13,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Image from "../components/image";
 import AboutSection from "../components/sections/AboutSection";
+import ExperienceSection from "../components/sections/ExperienceSection";
 
 function IndexPage(props: PageProps) {
   let containerRef = useRef<HTMLDivElement>(null);
@@ -59,6 +60,7 @@ function IndexPage(props: PageProps) {
       <main ref={containerRef}>
         <WelcomeSection />
         <AboutSection />
+        <ExperienceSection />
       </main>
       <Footer mouseCursor={mouseCursor}/>
     </>
