@@ -14,6 +14,8 @@ import Footer from "../components/footer";
 import Image from "../components/image";
 import AboutSection from "../components/sections/AboutSection";
 import ExperienceSection from "../components/sections/ExperienceSection";
+import { Puddle, Droplet } from "../components/SvgIcons";
+import IntroScreen from "../components/screens/IntroScreen";
 
 function IndexPage(props: PageProps) {
   let containerRef = useRef<HTMLDivElement>(null);
@@ -55,6 +57,7 @@ function IndexPage(props: PageProps) {
 
   return (
     <>
+      <IntroScreen />
       <div ref={mouseCursor} className="cursor"></div>
       <Header mouseCursor={mouseCursor} />
       <main ref={containerRef}>
@@ -62,7 +65,7 @@ function IndexPage(props: PageProps) {
         <AboutSection />
         <ExperienceSection />
       </main>
-      <Footer mouseCursor={mouseCursor}/>
+      <Footer mouseCursor={mouseCursor} />
     </>
   );
 }

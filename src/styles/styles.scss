@@ -51,6 +51,29 @@ body {
   z-index: 9;
 }
 
+// Intro Screen
+.intro-screen {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $accent;
+  z-index: 15;
+
+  .droplet-container {
+    // background: green;
+  }
+
+  .puddle-container {
+    // background: red;
+    position: relative;
+    top: 90px;
+  }
+}
+
 // Header
 header {
   height: 80px;
@@ -326,50 +349,6 @@ main {
           display: flex;
           flex-direction: row;
 
-          .number-container {
-            width: 39px;
-            height: 39px;
-            position: relative;
-            margin-right: 20px;
-
-            .square {
-              width: 30px;
-              height: 30px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              position: absolute;
-              bottom: 0px;
-              left: 0px;
-              background: $accent;
-              background-blend-mode: difference;
-            }
-
-            .number {
-              width: 30px;
-              height: 30px;
-              display: flex;
-              position: absolute;
-              bottom: 0px;
-              left: 0px;
-              justify-content: center;
-              align-items: center;
-              strong {
-                font-size: 1em;
-                opacity: 1;
-                color: $numberColor;
-                z-index: 3;
-              }
-            }
-
-            .dot-grid-svg {
-              width: 30px;
-              height: 30px;
-              position: absolute;
-              right: 0px;
-            }
-          }
-
           h2 {
             font-size: 3.1em;
             color: $accent;
@@ -460,3 +439,47 @@ footer {
   }
 }
 
+// Section Number Component
+.number-container {
+  width: 39px;
+  height: 39px;
+  position: relative;
+  margin-right: 20px;
+
+  .square {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: $accent;
+    background-blend-mode: difference;
+  }
+
+  .number {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    justify-content: center;
+    align-items: center;
+    strong {
+      font-size: 1em;
+      opacity: 1;
+      color: $numberColor;
+      z-index: 3;
+    }
+  }
+
+  .dot-grid-svg {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0px;
+  }
+}

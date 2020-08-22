@@ -1,5 +1,49 @@
 import * as React from "react";
 
+export function Droplet(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width={34} height={67} viewBox="0 0 34 67" fill="none" {...props}>
+      <g filter="url(#prefix__filter0_i)">
+        <path
+          d="M34 45.213C34 57.246 26.389 67 17 67S0 57.246 0 45.213C0 33.181 7.611 0 17 0s17 33.18 17 45.213z"
+          fill="#fff"
+        />
+      </g>
+      <defs>
+        <filter
+          id="prefix__filter0_i"
+          x={0}
+          y={0}
+          width={34}
+          height={71}
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity={0} result="BackgroundImageFix" />
+          <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feColorMatrix
+            in="SourceAlpha"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy={4} />
+          <feGaussianBlur stdDeviation={2} />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2={-1} k3={1} />
+          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+          <feBlend in2="shape" result="effect1_innerShadow" />
+        </filter>
+      </defs>
+    </svg>
+  )
+}
+
+export function Puddle(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width={320} height={48} viewBox="0 0 320 48" fill="none" {...props}>
+      <ellipse cx={160} cy={24} rx={160} ry={24} fill="#221C47" />
+    </svg>
+  );
+}
 
 export function DotGrid(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -76,7 +120,7 @@ export function DotGrid(props: React.SVGProps<SVGSVGElement>) {
         </clipPath>
       </defs>
     </svg>
-  )
+  );
 }
 
 export function BrowserMock(props: React.SVGProps<SVGSVGElement>) {
