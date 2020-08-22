@@ -4,18 +4,18 @@ $font: "Akkurat", "Cerebri Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
   Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
 // Color Variables
-$daySky: #feafa0;
-$dayShadow: rgba(255, 0, 0, 0.1);
 $primary: #221c47;
 $secondary: #afa1ff;
+$tertiary: #2D255B;
 $accent: #504cff;
-$navyish: #343a50;
+$numberColor: #FFE600;
 $white: #fff;
 $inactiveLinks: #afa1ff;
-$grayLabel: rgba(112, 112, 112, 0.5);
 
 // Font variables
 $bold: 700;
+$regular: 400;
+$light: 300;
 
 html,
 body {
@@ -110,6 +110,7 @@ header {
 }
 
 main {
+  font-family: "Cerebri Sans";
   width: 100%;
   height: 100%;
   position: absolute;
@@ -129,17 +130,19 @@ main {
       display: flex;
       flex-direction: column;
       z-index: 1;
-      font-family: "Cerebri Sans";
       h1 {
+        font-weight: $bold;
         font-size: 5.6em;
         color: $accent;
       }
       em {
+        font-weight: $light;
         font-size: 14px;
         color: $secondary;
         margin-top: -2.5em;
       }
       p {
+        font-weight: $regular;
         color: $secondary;
         margin-top: 1em;
       }
@@ -156,8 +159,129 @@ main {
     height: 100%;
     justify-content: center;
     align-items: center;
+
+
+    .inner-container {
+      display: flex;
+      flex-direction: row;
+
+      .left-section {
+        display: flex;
+        flex-direction: column;
+
+        .top-section {
+          display: flex;
+          flex-direction: row;
+
+          .number-container {
+            width: 39px;
+            height: 39px;
+            position: relative;
+            margin-right: 20px;
+            
+            .square {
+              width: 30px;
+              height: 30px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: absolute;
+              bottom: 0px;
+              left: 0px;
+              background: $accent;
+              background-blend-mode: difference;
+            }
+
+            .number {
+              width: 30px;
+              height: 30px;
+              display: flex;
+              position: absolute;
+              bottom: 0px;
+              left: 0px;
+              justify-content: center;
+              align-items: center;
+              strong {
+                font-size: 1em;
+                opacity: 1;
+                color: $numberColor;
+                z-index: 3;
+              }
+            }
+
+
+
+            .dot-grid-svg {
+              width: 30px;
+              height: 30px;
+              position: absolute;
+              right: 0px;
+            }
+          }
+
+          h2 {
+            font-size: 3.1em;
+            color: $accent;
+          }
+        }
+
+        .mid-section {
+          width: 512px;
+
+          p {
+            font-size: 1em;
+            color: $secondary;
+          }
+        }
+
+        .bottom-section {
+          display: flex;
+          width: 400px;
+          // justify-content: space-around;
+          flex-wrap: wrap;
+
+          .tag {
+            display: inline;
+            font-size: 12px;
+            font-weight: $regular;
+            color: $white;
+            background: $accent;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin: 0px 20px 13px 0px;
+          }
+        }
+      }
+
+      .right-section {
+        width: 272px;
+        height: 272px;
+        background: red;
+        position: relative;
+
+        .circle {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background: $tertiary;
+          border-radius: 50%;
+        }
+
+        .profile-pic {
+          width: 224px;
+          height: 224px;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          border-radius: 50%;
+        }
+      }
+    }
   }
+
 }
+
+
 
 footer {
   height: 80px;

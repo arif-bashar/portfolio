@@ -1,5 +1,84 @@
 import * as React from "react";
 
+
+export function DotGrid(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width={30} height={30} viewBox="0 0 30 30" fill="none" {...props}>
+      <g clipPath="url(#prefix__clip0)" fill="#D2D6DB">
+        <circle cx={0.5} cy={0.5} r={0.5} />
+        <circle cx={4.5} cy={0.5} r={0.5} />
+        <circle cx={8.5} cy={0.5} r={0.5} />
+        <circle cx={12.5} cy={0.5} r={0.5} />
+        <circle cx={16.5} cy={0.5} r={0.5} />
+        <circle cx={20.5} cy={0.5} r={0.5} />
+        <circle cx={24.5} cy={0.5} r={0.5} />
+        <circle cx={28.5} cy={0.5} r={0.5} />
+        <circle cx={0.5} cy={4.5} r={0.5} />
+        <circle cx={4.5} cy={4.5} r={0.5} />
+        <circle cx={8.5} cy={4.5} r={0.5} />
+        <circle cx={12.5} cy={4.5} r={0.5} />
+        <circle cx={16.5} cy={4.5} r={0.5} />
+        <circle cx={20.5} cy={4.5} r={0.5} />
+        <circle cx={24.5} cy={4.5} r={0.5} />
+        <circle cx={28.5} cy={4.5} r={0.5} />
+        <circle cx={0.5} cy={8.5} r={0.5} />
+        <circle cx={4.5} cy={8.5} r={0.5} />
+        <circle cx={8.5} cy={8.5} r={0.5} />
+        <circle cx={12.5} cy={8.5} r={0.5} />
+        <circle cx={16.5} cy={8.5} r={0.5} />
+        <circle cx={20.5} cy={8.5} r={0.5} />
+        <circle cx={24.5} cy={8.5} r={0.5} />
+        <circle cx={28.5} cy={8.5} r={0.5} />
+        <circle cx={0.5} cy={12.5} r={0.5} />
+        <circle cx={4.5} cy={12.5} r={0.5} />
+        <circle cx={8.5} cy={12.5} r={0.5} />
+        <circle cx={12.5} cy={12.5} r={0.5} />
+        <circle cx={16.5} cy={12.5} r={0.5} />
+        <circle cx={20.5} cy={12.5} r={0.5} />
+        <circle cx={24.5} cy={12.5} r={0.5} />
+        <circle cx={28.5} cy={12.5} r={0.5} />
+        <circle cx={0.5} cy={16.5} r={0.5} />
+        <circle cx={4.5} cy={16.5} r={0.5} />
+        <circle cx={8.5} cy={16.5} r={0.5} />
+        <circle cx={12.5} cy={16.5} r={0.5} />
+        <circle cx={16.5} cy={16.5} r={0.5} />
+        <circle cx={20.5} cy={16.5} r={0.5} />
+        <circle cx={24.5} cy={16.5} r={0.5} />
+        <circle cx={28.5} cy={16.5} r={0.5} />
+        <circle cx={0.5} cy={20.5} r={0.5} />
+        <circle cx={4.5} cy={20.5} r={0.5} />
+        <circle cx={8.5} cy={20.5} r={0.5} />
+        <circle cx={12.5} cy={20.5} r={0.5} />
+        <circle cx={16.5} cy={20.5} r={0.5} />
+        <circle cx={20.5} cy={20.5} r={0.5} />
+        <circle cx={24.5} cy={20.5} r={0.5} />
+        <circle cx={28.5} cy={20.5} r={0.5} />
+        <circle cx={0.5} cy={24.5} r={0.5} />
+        <circle cx={4.5} cy={24.5} r={0.5} />
+        <circle cx={8.5} cy={24.5} r={0.5} />
+        <circle cx={12.5} cy={24.5} r={0.5} />
+        <circle cx={16.5} cy={24.5} r={0.5} />
+        <circle cx={20.5} cy={24.5} r={0.5} />
+        <circle cx={24.5} cy={24.5} r={0.5} />
+        <circle cx={28.5} cy={24.5} r={0.5} />
+        <circle cx={0.5} cy={28.5} r={0.5} />
+        <circle cx={4.5} cy={28.5} r={0.5} />
+        <circle cx={8.5} cy={28.5} r={0.5} />
+        <circle cx={12.5} cy={28.5} r={0.5} />
+        <circle cx={16.5} cy={28.5} r={0.5} />
+        <circle cx={20.5} cy={28.5} r={0.5} />
+        <circle cx={24.5} cy={28.5} r={0.5} />
+        <circle cx={28.5} cy={28.5} r={0.5} />
+      </g>
+      <defs>
+        <clipPath id="prefix__clip0">
+          <path fill="#fff" d="M0 0h30v30H0z" />
+        </clipPath>
+      </defs>
+    </svg>
+  )
+}
+
 export function BrowserMock(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg

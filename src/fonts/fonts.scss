@@ -1,9 +1,37 @@
 @font-face {
   font-family: "Akkurat";
-  src: url("Akkurat-Bold.svg"), url("Akkurat-Bold.woff");
+  font-weight: 400;
+  font-style: normal;
+  src: url("Akkurat-Regular.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Akkurat";
+  font-weight: 700;
+  font-style: normal;
+  src: url("Akkurat-Bold.woff") format("woff");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Cerebri Sans";
-  src: url("CerebriSans-Bold.woff");
+  font-weight: 300;
+  font-style: italic;
+  src: url("CerebriSans-LightItalic.woff2") format("woff2"), url("CerebriSans-LightItalic.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cerebri Sans";
+  font-weight: 400;
+  font-style: normal;
+  src: url("CerebriSans-Regular.woff2") format("woff2"), url("CerebriSans-Regular.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cerebri Sans";
+  font-weight: 700;
+  font-style: normal;
+  src:  url("CerebriSans-Bold.woff2") format("woff2"), url("CerebriSans-Bold.woff") format("woff");
+  font-display: swap;
 }
