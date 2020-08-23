@@ -1,12 +1,20 @@
-import * as React from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import { Link } from "gatsby";
+import gsap from "gsap";
 
 type HeaderProps = {
   mouseCursor: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 function Header(props: HeaderProps) {
-  const [logoHovered, setLogoHovered] = React.useState(false);
+  const [logoHovered, setLogoHovered] = useState(false);
+  const [animStatus, setAnimStatus] = useState("pause");
+
+  let headerRef = useRef<HTMLElement | null>(null);
+
+  const showHeaderTL = useMemo(() => gsap.timeline({ paused: true }), []);
+  
+  let prevScroll = window.pageYOffset;
 
   const logoStyleProps = {
     color: "white",
@@ -35,8 +43,46 @@ function Header(props: HeaderProps) {
     setLogoHovered(false);
   };
 
+  const scrollHandler = () => {
+    let currentScroll = window.pageYOffset;
+
+    if (prevScroll > currentScroll)
+      setAnimStatus("play");
+    else
+      setAnimStatus("reverse")
+  }
+
+  const wheelHandler = (event: WheelEvent) => {
+    if (event.deltaY > 0) {
+      setAnimStatus("play");
+    } else if (event.deltaY < -1) {
+      setAnimStatus("reverse");
+    }
+  };
+
+  useEffect(() => {
+    // window.addEventListener("wheel", wheelHandler, { passive: false });
+    window.addEventListener("scroll", scrollHandler, { passive: false});
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
+  useEffect(() => {
+    showHeaderTL.to(headerRef.current, {
+      duration: 0.2,
+      opacity: 0,
+      ease: "power3.easeOut",
+    });
+  }, []);
+
+  useEffect(() => {
+    if (animStatus == "play") showHeaderTL.play();
+    else if (animStatus == "reverse") showHeaderTL.reverse();
+  }, [animStatus]);
+
   return (
-    <header>
+    <header ref={headerRef}>
       <div className="inner-header">
         <div className="logo">
           <Link

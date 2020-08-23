@@ -4,8 +4,13 @@ import gsap from "gsap";
 // Components
 import { Puddle } from "../SvgIcons";
 
-function IntroScreen() {
+type IntroScreenProps = {
+  rootRef: React.MutableRefObject<HTMLDivElement | null>
+}
+
+function IntroScreen(props: IntroScreenProps) {
   let circleRef = useRef<HTMLDivElement | null>(null);
+  let circleRef2 = useRef<HTMLDivElement | null>(null);
   let screenRef = useRef<HTMLDivElement | null>(null);
   let dropletSVG = useRef<SVGSVGElement | null>(null);
   let dropletPath = useRef<SVGPathElement | null>(null);
@@ -19,8 +24,9 @@ function IntroScreen() {
   // Callback function after animation completes to update introDone variable
   const onIntroDone = () => {
     setTimeout(() => {
+      props.rootRef.current!.style.overflowY = "scroll";
       setIntroDone(true);
-    }, 500);
+    }, 100);
   };
 
   /* Droplet + Screen Fill Animation on Load:
@@ -34,6 +40,10 @@ function IntroScreen() {
       y: -500,
       opacity: 1,
     });
+
+    // Prevent scroll during intro animation
+    if (props.rootRef.current != null)
+      props.rootRef.current.style.overflowY = "hidden"
 
     // Droplet falls down onto the puddle
     dropletTL
@@ -81,7 +91,7 @@ function IntroScreen() {
         "<"
       ) // Bring the tiny circle div into view as soon as droplet bounces up to max height
       .to(
-        circleRef.current,
+        [circleRef.current, circleRef2.current],
         {
           duration: 0,
           opacity: 1,
@@ -89,9 +99,10 @@ function IntroScreen() {
         "bounce+=0.4"
       ) // Explode the circle to fill the screen
       .to(
-        circleRef.current,
+        [circleRef2.current, circleRef.current],
         {
           duration: 0.5,
+          stagger: 0.05,
           scale: 200,
           ease: "power3.easeOut",
         },
@@ -111,29 +122,30 @@ function IntroScreen() {
 
   if (!introDone) {
     return (
-      <div ref={screenRef} className="intro-screen">
-        <div className="droplet-container">
-          <div ref={circleRef} className="circle-expand"></div>
-          <svg
-            opacity="0"
-            ref={dropletSVG}
-            width="34"
-            height="67"
-            viewBox="0 0 34 67"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              ref={dropletPath}
-              d="M34 45.2133C34 57.2458 26.3888 67 17 67C7.61116 67 0 57.2458 0 45.2133C0 33.1808 7.61116 0 17 0C26.3888 0 34 33.1808 34 45.2133Z"
-              fill="white"
-            />
-          </svg>
+        <div ref={screenRef} className="intro-screen">
+          <div className="droplet-container">
+            <div ref={circleRef} className="circle-expand"></div>
+            <div ref={circleRef2} className="circle-expand2"></div>
+            <svg
+              opacity="0"
+              ref={dropletSVG}
+              width="34"
+              height="67"
+              viewBox="0 0 34 67"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                ref={dropletPath}
+                d="M34 45.2133C34 57.2458 26.3888 67 17 67C7.61116 67 0 57.2458 0 45.2133C0 33.1808 7.61116 0 17 0C26.3888 0 34 33.1808 34 45.2133Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <div className="puddle-container">
+            <Puddle />
+          </div>
         </div>
-        <div className="puddle-container">
-          <Puddle />
-        </div>
-      </div>
     );
   } else return null;
 }

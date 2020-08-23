@@ -23,12 +23,21 @@ body {
   font-size: 16px;
   padding: 0;
   margin: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
-  overflow-y: hidden;
   cursor: none;
   background: $accent;
+  -webkit-font-smoothing: antialised;
+}
+
+.root {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background: $primary;
+  overflow-x: hidden;
+  // overflow-y: hidden;
 }
 
 // Cursor
@@ -78,6 +87,17 @@ body {
       transform-origin: 50% 50%;
       opacity: 0;
     }
+    .circle-expand2 {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      background: rgba(34, 28, 71, 0.2);
+      border-radius: 50%;
+      margin-top: -37px;
+      margin-left: 7px;
+      transform-origin: 50% 50%;
+      opacity: 0;
+    }
   }
 
   .puddle-container {
@@ -91,7 +111,7 @@ body {
 header {
   height: 80px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0px;
   z-index: 10;
   .inner-header {
@@ -147,12 +167,12 @@ header {
 
 main {
   font-family: "Cerebri Sans";
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  // // overflow-x: hidden;
+  // // overflow-y: scroll;
   position: absolute;
-  background: $primary;
+  // // background: $primary;
 
   // Welcome Section
   .welcome-section {
@@ -378,13 +398,13 @@ main {
           margin-bottom: 26px;
           cursor: grab;
           overflow-x: scroll;
-          -ms-overflow-style: none;  /* Internet Explorer 10+ */
-          scrollbar-width: none;  /* Firefox */
+          -ms-overflow-style: none; /* Internet Explorer 10+ */
+          scrollbar-width: none; /* Firefox */
         }
 
-        .mid-section::-webkit-scrollbar { 
-          display: none;  /* Safari and Chrome */
-      }
+        .mid-section::-webkit-scrollbar {
+          display: none; /* Safari and Chrome */
+        }
 
         .bottom-section {
           width: 595px;

@@ -18,7 +18,8 @@ import { Puddle, Droplet } from "../components/SvgIcons";
 import IntroScreen from "../components/screens/IntroScreen";
 
 function IndexPage(props: PageProps) {
-  let containerRef = useRef<HTMLDivElement>(null);
+  let rootRef = useRef<HTMLDivElement | null>(null);
+  let containerRef = useRef<HTMLDivElement | null>(null);
   let slidingRef = useRef<HTMLDivElement | null>(null);
   let mouseCursor = useRef<HTMLDivElement | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -43,10 +44,6 @@ function IndexPage(props: PageProps) {
     };
   }, []);
 
-  useEffect(() => {
-    if (IntroScreen == null) console.log("its null");
-  }, [IntroScreen]);
-
   const images = useStaticQuery(graphql`
     query {
       background: file(relativePath: { eq: "bg.jpg" }) {
@@ -60,8 +57,8 @@ function IndexPage(props: PageProps) {
   `);
 
   return (
-    <>
-      <IntroScreen />
+    <div ref={rootRef} className="root">
+      <IntroScreen rootRef={rootRef}/>
       <div ref={mouseCursor} className="cursor"></div>
       <Header mouseCursor={mouseCursor} />
       <main ref={containerRef}>
@@ -70,7 +67,7 @@ function IndexPage(props: PageProps) {
         <ExperienceSection />
       </main>
       <Footer mouseCursor={mouseCursor} />
-    </>
+    </div>
   );
 }
 
