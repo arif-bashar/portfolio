@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Arif Bashar",
   "dependencies": {
+    "@types/react-helmet": "^6.1.0",
     "@types/react-transition-group": "^4.4.0",
     "gatsby": "^2.24.26",
     "gatsby-background-image": "^1.1.1",

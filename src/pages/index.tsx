@@ -43,6 +43,10 @@ function IndexPage(props: PageProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (IntroScreen == null) console.log("its null");
+  }, [IntroScreen]);
+
   const images = useStaticQuery(graphql`
     query {
       background: file(relativePath: { eq: "bg.jpg" }) {

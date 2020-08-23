@@ -26,8 +26,9 @@ body {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  overflow-y: hidden;
   cursor: none;
-  background: $primary;
+  background: $accent;
 }
 
 // Cursor
@@ -64,13 +65,25 @@ body {
   z-index: 15;
 
   .droplet-container {
-    // background: green;
+    z-index: 17;
+
+    .circle-expand {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      background: $primary;
+      border-radius: 50%;
+      margin-bottom: 17px;
+      margin-left: 7px;
+      transform-origin: 50% 50%;
+      opacity: 0;
+    }
   }
 
   .puddle-container {
-    // background: red;
     position: relative;
     top: 90px;
+    z-index: 16;
   }
 }
 
@@ -134,9 +147,12 @@ header {
 
 main {
   font-family: "Cerebri Sans";
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: absolute;
+  background: $primary;
 
   // Welcome Section
   .welcome-section {
@@ -359,7 +375,6 @@ main {
           width: 400px;
           display: flex;
           flex-direction: row;
-          // background: red;
           margin-bottom: 26px;
           cursor: grab;
           overflow-x: scroll;

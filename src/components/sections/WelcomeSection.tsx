@@ -35,79 +35,20 @@ function WelcomeSection() {
     }, 66);
   };
 
-  useEffect(() => {
-    window.addEventListener("wheel", wheelHandler, { passive: false });
+  // useEffect(() => {
+  //   window.addEventListener("wheel", wheelHandler, { passive: false });
 
-    return () => {
-      window.removeEventListener("wheel", wheelHandler);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("wheel", wheelHandler);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    gsap.set(helloRef.current, {
-      attr: {
-        width: 620,
-        height: 300,
-        viewBox: "-20 0 144 41",
-      },
-    });
-    scaleHelloTL
-      .to(helloRef.current, {
-        ease: "power3.easeOut",
-        attr: {
-          width: 920,
-          height: 165,
-          viewBox: "0 0 620 165",
-        },
-      })
-      .to(
-        nameRef.current,
-        {
-          ease: "power3.easeOut",
-          height: 300,
-        },
-        0
-      )
-      .to(nameRef.current, {
-        background: "transparent",
-      })
-      .to(
-        ".sliding-bg",
-        {
-          duration: 1,
-          ease: "back.out(1.7)",
-          scaleX: 0,
-        },
-        "+=0.2"
-      )
-      .to(
-        helloRef.current,
-        {
-          duration: 0.5,
-          ease: "power3.easeOut",
-          attr: {
-            viewBox: "0 160 620 165",
-          },
-        },
-        "+=0.2"
-      );
-    // scaleHelloTL.from()
-    // scaleHelloTL.from(".top-title", {
-    //   scale: 10,
-    //   left: '50%',
-    //   xPercent: -50,
-    //   ease: "power3.easeOut",
-    //   onComplete: () => {
-    //     props.setRevealed(true);
-    //   },
-    // });
-  }, []);
 
-  useEffect(() => {
-    if (animStatus == "play") scaleHelloTL.play();
-    else if (animStatus == "reverse") scaleHelloTL.reverse();
-    else if (animStatus == "pause") scaleHelloTL.pause();
-  }, [animStatus]);
+  // useEffect(() => {
+  //   if (animStatus == "play") scaleHelloTL.play();
+  //   else if (animStatus == "reverse") scaleHelloTL.reverse();
+  //   else if (animStatus == "pause") scaleHelloTL.pause();
+  // }, [animStatus]);
 
   // Name moves in direction of mouse
   const moveNameonMouse = (
@@ -127,7 +68,7 @@ function WelcomeSection() {
   return (
     <div
       className="welcome-section"
-      onMouseMove={event => moveNameonMouse(event, nameRef)}
+      // onMouseMove={event => moveNameonMouse(event, nameRef)}
     >
       <div className="browser-content">
         <h1>Arif Bashar.</h1>

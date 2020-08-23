@@ -26,30 +26,30 @@ function Footer(props: HeaderProps) {
   return (
     <footer>
       <div className="container">
-        <Link
+        <a
           onMouseLeave={onLeaveLinks}
           onMouseOver={onHoverLinks}
-          to="https://github.com/arif-bashar"
+          href="https://github.com/arif-bashar"
           target="_blank"
         >
           GitHub
-        </Link>
-        <Link
+        </a>
+        <a
           onMouseLeave={onLeaveLinks}
           onMouseOver={onHoverLinks}
-          to="https://www.behance.net/arifbashar/"
+          href="https://www.behance.net/arifbashar/"
           target="_blank"
         >
           Behance
-        </Link>
-        <Link
+        </a>
+        <a
           onMouseLeave={onLeaveLinks}
           onMouseOver={onHoverLinks}
-          to="https://www.linkedin.com/in/arif-bashar/"
+          href="https://www.linkedin.com/in/arif-bashar/"
           target="_blank"
         >
           LinkedIn
-        </Link>
+        </a>
       </div>
     </footer>
   );
