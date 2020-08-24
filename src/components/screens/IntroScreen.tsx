@@ -1,12 +1,15 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import gsap from "gsap";
+import ReactDOM from "react-dom";
 
 // Components
 import { Puddle } from "../SvgIcons";
+import { Helmet } from "react-helmet";
 
 type IntroScreenProps = {
-  rootRef: React.MutableRefObject<HTMLDivElement | null>
-}
+  rootRef: React.MutableRefObject<HTMLDivElement | null>;
+};
+
 
 function IntroScreen(props: IntroScreenProps) {
   let circleRef = useRef<HTMLDivElement | null>(null);
@@ -23,10 +26,9 @@ function IntroScreen(props: IntroScreenProps) {
 
   // Callback function after animation completes to update introDone variable
   const onIntroDone = () => {
-    setTimeout(() => {
-      props.rootRef.current!.style.overflowY = "scroll";
-      setIntroDone(true);
-    }, 100);
+    // if (props.rootRef.current != null)
+    //   props.rootRef.current!.style.overflowY = "scroll";
+    setIntroDone(true);
   };
 
   /* Droplet + Screen Fill Animation on Load:
@@ -42,8 +44,9 @@ function IntroScreen(props: IntroScreenProps) {
     });
 
     // Prevent scroll during intro animation
-    if (props.rootRef.current != null)
-      props.rootRef.current.style.overflowY = "hidden"
+    // if (props.rootRef.current != null)
+    //   props.rootRef.current.style.overflowY = "hidden";
+
 
     // Droplet falls down onto the puddle
     dropletTL
@@ -122,30 +125,33 @@ function IntroScreen(props: IntroScreenProps) {
 
   if (!introDone) {
     return (
-        <div ref={screenRef} className="intro-screen">
-          <div className="droplet-container">
-            <div ref={circleRef} className="circle-expand"></div>
-            <div ref={circleRef2} className="circle-expand2"></div>
-            <svg
-              opacity="0"
-              ref={dropletSVG}
-              width="34"
-              height="67"
-              viewBox="0 0 34 67"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                ref={dropletPath}
-                d="M34 45.2133C34 57.2458 26.3888 67 17 67C7.61116 67 0 57.2458 0 45.2133C0 33.1808 7.61116 0 17 0C26.3888 0 34 33.1808 34 45.2133Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-          <div className="puddle-container">
-            <Puddle />
-          </div>
+      <>
+      <Helmet bodyAttributes={{ class: `hidden` }} />
+      <div ref={screenRef} className="intro-screen">
+        <div className="droplet-container">
+          <div ref={circleRef} className="circle-expand"></div>
+          <div ref={circleRef2} className="circle-expand2"></div>
+          <svg
+            opacity="0"
+            ref={dropletSVG}
+            width="34"
+            height="67"
+            viewBox="0 0 34 67"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              ref={dropletPath}
+              d="M34 45.2133C34 57.2458 26.3888 67 17 67C7.61116 67 0 57.2458 0 45.2133C0 33.1808 7.61116 0 17 0C26.3888 0 34 33.1808 34 45.2133Z"
+              fill="white"
+            />
+          </svg>
         </div>
+        <div className="puddle-container">
+          <Puddle />
+        </div>
+      </div>
+      </>
     );
   } else return null;
 }

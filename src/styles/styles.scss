@@ -24,20 +24,15 @@ body {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100%;
-  overflow-x: hidden;
+  min-height: 100vh;
+  overflow: auto;
   cursor: none;
-  background: $accent;
-  -webkit-font-smoothing: antialised;
-}
-
-.root {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
   background: $primary;
-  overflow-x: hidden;
-  // overflow-y: hidden;
+  -webkit-font-smoothing: antialised;
+
+  &.hidden {
+    overflow: hidden;
+  }
 }
 
 // Cursor
@@ -111,7 +106,7 @@ body {
 header {
   height: 80px;
   width: 100%;
-  position: fixed;
+  position: absolute;
   top: 0px;
   z-index: 10;
   .inner-header {
@@ -169,10 +164,8 @@ main {
   font-family: "Cerebri Sans";
   width: 100%;
   height: 100%;
-  // // overflow-x: hidden;
-  // // overflow-y: scroll;
   position: absolute;
-  // // background: $primary;
+  display: block;
 
   // Welcome Section
   .welcome-section {

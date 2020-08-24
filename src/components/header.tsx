@@ -4,17 +4,17 @@ import gsap from "gsap";
 
 type HeaderProps = {
   mouseCursor: React.MutableRefObject<HTMLDivElement | null>;
+  rootRef: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 function Header(props: HeaderProps) {
   const [logoHovered, setLogoHovered] = useState(false);
   const [animStatus, setAnimStatus] = useState("pause");
+  const [scrollPos, setScrollPos] = useState(window.pageYOffset);
 
   let headerRef = useRef<HTMLElement | null>(null);
 
   const showHeaderTL = useMemo(() => gsap.timeline({ paused: true }), []);
-  
-  let prevScroll = window.pageYOffset;
 
   const logoStyleProps = {
     color: "white",
@@ -43,14 +43,12 @@ function Header(props: HeaderProps) {
     setLogoHovered(false);
   };
 
-  const scrollHandler = () => {
-    let currentScroll = window.pageYOffset;
-
-    if (prevScroll > currentScroll)
-      setAnimStatus("play");
-    else
-      setAnimStatus("reverse")
-  }
+  const scrollHandler = (e: Event) => {
+    let currentScrollPos = window.pageYOffset;
+    setScrollPos(currentScrollPos);
+    console.log(scrollPos);
+    console.log(e)
+  };
 
   const wheelHandler = (event: WheelEvent) => {
     if (event.deltaY > 0) {
@@ -62,7 +60,7 @@ function Header(props: HeaderProps) {
 
   useEffect(() => {
     // window.addEventListener("wheel", wheelHandler, { passive: false });
-    window.addEventListener("scroll", scrollHandler, { passive: false});
+    window.addEventListener("scroll", scrollHandler);
     return () => {
       window.removeEventListener("scroll", scrollHandler);
     };
