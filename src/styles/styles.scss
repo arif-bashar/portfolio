@@ -24,16 +24,19 @@ body {
   padding: 0;
   margin: 0;
   width: 100%;
-  min-height: 100vh;
-  overflow: auto;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
   cursor: none;
   background: $primary;
   -webkit-font-smoothing: antialised;
 
   &.hidden {
-    overflow: hidden;
+    overflow-y: hidden !important;
+
   }
 }
+
 
 // Cursor
 .cursor {
@@ -165,7 +168,7 @@ main {
   width: 100%;
   height: 100%;
   position: absolute;
-  display: block;
+  // display: block;
 
   // Welcome Section
   .welcome-section {

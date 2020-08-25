@@ -5,6 +5,8 @@ import BackgroundImage from "gatsby-background-image";
 import Img from "gatsby-image";
 import gsap, { TimelineMax } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Helmet } from "react-helmet";
+
 import WelcomeSection from "../components/sections/WelcomeSection";
 import Slide2 from "../components/sections/AboutSection";
 
@@ -44,6 +46,12 @@ function IndexPage(props: PageProps) {
     };
   }, []);
 
+
+  useEffect(() => {
+
+  }, []);
+
+
   const images = useStaticQuery(graphql`
     query {
       background: file(relativePath: { eq: "bg.jpg" }) {
@@ -59,14 +67,16 @@ function IndexPage(props: PageProps) {
   return (
     <>
       <IntroScreen rootRef={rootRef} />
-      <div ref={mouseCursor} className="cursor"></div>
-      <Header rootRef={rootRef} mouseCursor={mouseCursor} />
-      <main ref={containerRef}>
-        <WelcomeSection />
-        <AboutSection />
-        <ExperienceSection />
-      </main>
-      <Footer mouseCursor={mouseCursor} />
+      <div ref={rootRef} className="root">
+        <div ref={mouseCursor} className="cursor"></div>
+        <Header rootRef={rootRef} mouseCursor={mouseCursor} />
+        <main ref={containerRef}>
+          <WelcomeSection />
+          <AboutSection />
+          <ExperienceSection />
+        </main>
+        <Footer mouseCursor={mouseCursor} />
+      </div>
     </>
   );
 }
