@@ -25,6 +25,7 @@ function IntroScreen(props: IntroScreenProps) {
 
   // Callback function after animation completes to update introDone variable
   const onIntroDone = () => {
+    // document.body.style.overflowY = "scroll";
     // if (props.rootRef.current != null)
     //   props.rootRef.current!.style.display = "block";
     setTimeout(() => {
@@ -48,7 +49,7 @@ function IntroScreen(props: IntroScreenProps) {
     // if (props.rootRef.current != null)
     //   props.rootRef.current.style.display = "none";
 
-    document.body.style.overflowY = "hidden";
+    // document.body.style.overflowY = "hidden";
 
     // Droplet falls down onto the puddle
     dropletTL
@@ -143,7 +144,7 @@ function IntroScreen(props: IntroScreenProps) {
   if (!introDone) {
     return (
       <>
-      {/* <Helmet bodyAttributes={{ class: `hidden`}} /> */}
+        {/* <Helmet bodyAttributes={{ class: `hidden`}} /> */}
         <div ref={screenRef} className="intro-screen">
           <div className="droplet-container">
             <div ref={circleRef} className="circle-expand"></div>

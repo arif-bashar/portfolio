@@ -66,17 +66,17 @@ function IndexPage(props: PageProps) {
 
   return (
     <>
+      {/* <div ref={rootRef} className="root"> */}
       <IntroScreen rootRef={rootRef} />
-      <div ref={rootRef} className="root">
-        <div ref={mouseCursor} className="cursor"></div>
-        <Header rootRef={rootRef} mouseCursor={mouseCursor} />
-        <main ref={containerRef}>
-          <WelcomeSection />
-          <AboutSection />
-          <ExperienceSection />
-        </main>
-        <Footer mouseCursor={mouseCursor} />
-      </div>
+      <div ref={mouseCursor} className="cursor"></div>
+      <Header rootRef={rootRef} mouseCursor={mouseCursor} />
+      <main onScroll={() => { console.log("it changed boiiiii") }} style={{ overflowY: 'scroll' }} ref={containerRef}>
+        <WelcomeSection />
+        <AboutSection />
+        <ExperienceSection />
+      </main>
+      <Footer mouseCursor={mouseCursor} />
+      {/* </div> */}
     </>
   );
 }
