@@ -25,7 +25,7 @@ function IntroScreen(props: IntroScreenProps) {
 
   // Callback function after animation completes to update introDone variable
   const onIntroDone = () => {
-    // document.body.style.overflowY = "scroll";
+    document.body.style.overflowY = "scroll";
     // if (props.rootRef.current != null)
     //   props.rootRef.current!.style.display = "block";
     setTimeout(() => {

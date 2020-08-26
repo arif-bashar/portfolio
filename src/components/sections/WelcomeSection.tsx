@@ -68,7 +68,7 @@ function WelcomeSection() {
   return (
     <div
       className="welcome-section"
-      // onMouseMove={event => moveNameonMouse(event, nameRef)}
+    // onMouseMove={event => moveNameonMouse(event, nameRef)}
     >
       <div className="browser-content">
         <h1>Arif Bashar.</h1>

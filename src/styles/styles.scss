@@ -162,14 +162,14 @@ main {
   font-family: "Cerebri Sans";
   width: 100%;
   height: 100%;
-  position: absolute;
+  // position: absolute;
   // display: block;
 
   // Welcome Section
   .welcome-section {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     justify-content: center;
     align-items: center;
 
@@ -222,7 +222,7 @@ main {
   .about-section {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     justify-content: center;
     align-items: center;
 
@@ -360,7 +360,7 @@ main {
   .experience-section {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     justify-content: center;
     align-items: center;
 

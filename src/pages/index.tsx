@@ -70,7 +70,7 @@ function IndexPage(props: PageProps) {
       <IntroScreen rootRef={rootRef} />
       <div ref={mouseCursor} className="cursor"></div>
       <Header rootRef={rootRef} mouseCursor={mouseCursor} />
-      <main onScroll={() => { console.log("it changed boiiiii") }} style={{ overflowY: 'scroll' }} ref={containerRef}>
+      <main ref={containerRef}>
         <WelcomeSection />
         <AboutSection />
         <ExperienceSection />
