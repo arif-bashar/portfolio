@@ -4,8 +4,10 @@ import { Transition } from "react-transition-group";
 import { BrowserMock } from "../SvgIcons";
 
 function WelcomeSection() {
-  let nameRef = useRef<HTMLDivElement>(null);
   let contentRef = useRef<HTMLDivElement>(null);
+  let nameRef = useRef<HTMLHeadingElement>(null);
+  let proRef = useRef<HTMLElement>(null);
+  let defRef = useRef<HTMLParagraphElement>(null);
   let helloRef = useRef<SVGSVGElement | null>(null);
   let pathRef = useRef<SVGPathElement | null>(null);
   const [animStatus, setAnimStatus] = useState("pause");
@@ -16,45 +18,14 @@ function WelcomeSection() {
   // Calls name entrance animation after page load
   useEffect(() => {
     gsap.from(contentRef.current, {
-      duration: 0.5,
-      // opacity: 0,
-      y: -30,
+      delay: 0.2,
+      duration: 1,
+      opacity: 0,
+      y: 20,
       ease: "power3.easeIn"
     });
-    // if (!props.revealed) animateName();
   }, []);
 
-  const wheelHandler = (event: WheelEvent) => {
-    window.clearTimeout(isScrolling);
-
-    console.log(event.deltaY);
-    if (event.deltaY > 0) {
-      setAnimStatus("play");
-      // setCurrentSlide(1);
-      // if (!nameRevealed) setNamedRevealed(true);
-    } else if (event.deltaY < 0) {
-      setAnimStatus("reverse");
-      // setCurrentSlide(0);
-    }
-
-    isScrolling = setTimeout(() => {
-      // setAnimStatus("play");
-    }, 66);
-  };
-
-  // useEffect(() => {
-  //   window.addEventListener("wheel", wheelHandler, { passive: false });
-
-  //   return () => {
-  //     window.removeEventListener("wheel", wheelHandler);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   if (animStatus == "play") scaleHelloTL.play();
-  //   else if (animStatus == "reverse") scaleHelloTL.reverse();
-  //   else if (animStatus == "pause") scaleHelloTL.pause();
-  // }, [animStatus]);
 
   // Name moves in direction of mouse
   const moveNameonMouse = (
@@ -78,12 +49,12 @@ function WelcomeSection() {
     >
       <div className="browser">
         <div ref={contentRef} className="content">
-          <h1>Arif Bashar.</h1>
-          <em>ah-reef &nbsp; &nbsp; bah-shar</em>
-          <p>
+          <h1 ref={nameRef}>Arif Bashar.</h1>
+          <em ref={proRef}>ah-reef &nbsp; &nbsp; bah-shar</em>
+          <p ref={defRef}>
             A human being (not a robot &#128559;) who took 3.5 years to become a
             software engineer and realized that he really likes designing and
-            building beautiful a pplications in React and React Native.
+            building beautiful applications in React and React Native.
           </p>
         </div>
       </div>

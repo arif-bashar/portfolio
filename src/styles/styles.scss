@@ -19,20 +19,20 @@ $light: 300;
 
 html,
 body {
-
+  width: 100%;
+  min-height: 100vh;
   font-family: $font;
   font-size: 16px;
   padding: 0;
   margin: 0;
-  width: 100%;
-  height: 100vh;
+  line-height: 1.3;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   cursor: none;
   background: $primary;
   -webkit-font-smoothing: antialised;
-
-
+  // justify-content: center;
+  // align-items: center;
 }
 
 // Cursor
@@ -71,7 +71,8 @@ body {
   align-items: center;
   background: $accent;
   z-index: 15;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
   .droplet-container {
     z-index: 17;
@@ -107,6 +108,12 @@ body {
   }
 }
 
+// Root Container
+.root {
+  font-family: "Cerebri Sans";
+  opacity: 0;
+}
+
 // Header
 header {
   height: 80px;
@@ -114,6 +121,7 @@ header {
   position: fixed;
   top: 0px;
   z-index: 10;
+  transition: 0.3s ease-in-out;
   .inner-header {
     display: flex;
     align-items: center;
@@ -142,25 +150,28 @@ header {
         display: none;
       }
       nav {
-        a {
-          margin: 0 80px;
-          text-decoration: none;
-          font-weight: $bold;
-          color: $inactiveLinks;
-          transition: 0.3s ease-in-out;
-          @include media("<=desktop") {
-            margin: 0 20px;
-          }
-
-          &:hover {
-            color: $white;
-          }
-          &:hover:after {
-            content: "•";
-            color: #ff8282;
-            position: absolute;
-            margin-left: 5px;
+        div {
+          display: inline-block;
+          a {
+            margin: 0 80px;
+            text-decoration: none;
+            font-weight: $bold;
+            color: $inactiveLinks;
             transition: 0.3s ease-in-out;
+            @include media("<=desktop") {
+              margin: 0 20px;
+            }
+
+            &:hover {
+              color: $white;
+            }
+            &:hover:after {
+              content: "•";
+              color: #ff8282;
+              position: absolute;
+              margin-left: 5px;
+              transition: 0.3s ease-in-out;
+            }
           }
         }
       }
@@ -168,28 +179,32 @@ header {
   }
 }
 
-main {
-  font-family: "Cerebri Sans";
-  width: 100%;
-  height: 100%;
+.header-hidden {
+  opacity: 0;
+}
 
+main {
   // Welcome Section
   .welcome-section {
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
+    // background: red;
 
     .browser {
-      display: flex;
+      // display: flex;
       width: 1005px;
       height: 517px;
-      flex-direction: column;
+      position: absolute;
+      // flex-direction: column;
       background-image: url("../images/browser-mock.svg");
       background-repeat: no-repeat;
-      padding-left: 140px;
-      padding-top: 140px;
+      // background-size: cover;
+      border-radius: 15px;
+      // margin-left: 140px;
+      // padding-top: 140px;
 
       @include media("<=tablet") {
         width: 595px;
@@ -211,6 +226,8 @@ main {
       .content {
         width: 502px;
         height: 223px;
+        margin-left: 140px;
+        margin-top: 140px;
 
         @include media("<=tablet") {
           width: 350px;
@@ -224,10 +241,11 @@ main {
           font-weight: $bold;
           font-size: 5.6em;
           color: $accent;
-          margin-bottom: 0px;
+          margin-bottom: -20px;
 
           @include media("<=tablet") {
             font-size: 3.1em;
+            margin-bottom: -10px;
           }
 
           @include media("<=phone") {
@@ -252,17 +270,17 @@ main {
   .about-section {
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
 
     .inner-container {
       display: flex;
-      width: 45%;
+      max-width: 700px;
+      min-width: 250px;
       flex-direction: row;
 
       @include media("<=tablet") {
-        width: 100%;
         padding-left: 30px;
         padding-right: 30px;
         flex-direction: column;
@@ -275,12 +293,14 @@ main {
         .top-section {
           display: flex;
           flex-direction: row;
+          align-items: center;
 
           .number-container {
             width: 39px;
             height: 39px;
-            position: relative;
+            // position: relative;
             margin-right: 20px;
+            // background: red;
 
             .square {
               width: 30px;
@@ -370,7 +390,6 @@ main {
           border-radius: 50%;
           background-color: $tertiary;
 
-
           img {
             display: block !important;
             border-radius: 50%;
@@ -384,19 +403,17 @@ main {
   .experience-section {
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     justify-content: center;
     align-items: center;
 
-
-
     .inner-container {
       display: flex;
-      width: 40%;
+      max-width: 595px;
+      min-width: 250px;
       flex-direction: row;
 
       @include media("<=tablet") {
-        width: 100%;
         padding-left: 30px;
         padding-right: 30px;
         flex-direction: column;
@@ -409,6 +426,7 @@ main {
         .top-section {
           display: flex;
           flex-direction: row;
+          align-items: center;
 
           h2 {
             font-size: 3.1em;

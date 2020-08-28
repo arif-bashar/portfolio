@@ -118,7 +118,7 @@ function IntroScreen(props: IntroScreenProps) {
       .to(
         screenRef.current,
         {
-          duration: 1.5,
+          duration: 1,
           opacity: 0,
           ease: "power3.easeOut",
           onComplete: () => dispatch(setIntroDone())
