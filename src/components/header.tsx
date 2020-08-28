@@ -4,7 +4,6 @@ import gsap from "gsap";
 
 type HeaderProps = {
   mouseCursor: React.MutableRefObject<HTMLDivElement | null>;
-  rootRef: React.MutableRefObject<HTMLDivElement | null>;
 };
 
 function Header(props: HeaderProps) {

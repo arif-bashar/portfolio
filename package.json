@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Arif Bashar",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "@types/react-helmet": "^6.1.0",
     "@types/react-transition-group": "^4.4.0",
     "gatsby": "^2.24.26",
@@ -25,6 +26,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.1",
     "react-transition-group": "^4.4.1",
     "smooth-scrollbar": "^8.5.2",
     "typescript": "^3.9.7"

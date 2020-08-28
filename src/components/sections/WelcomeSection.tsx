@@ -5,6 +5,7 @@ import { BrowserMock } from "../SvgIcons";
 
 function WelcomeSection() {
   let nameRef = useRef<HTMLDivElement>(null);
+  let contentRef = useRef<HTMLDivElement>(null);
   let helloRef = useRef<SVGSVGElement | null>(null);
   let pathRef = useRef<SVGPathElement | null>(null);
   const [animStatus, setAnimStatus] = useState("pause");
@@ -14,6 +15,12 @@ function WelcomeSection() {
 
   // Calls name entrance animation after page load
   useEffect(() => {
+    gsap.from(contentRef.current, {
+      duration: 0.5,
+      // opacity: 0,
+      y: -30,
+      ease: "power3.easeIn"
+    });
     // if (!props.revealed) animateName();
   }, []);
 
@@ -43,7 +50,6 @@ function WelcomeSection() {
   //   };
   // }, []);
 
-
   // useEffect(() => {
   //   if (animStatus == "play") scaleHelloTL.play();
   //   else if (animStatus == "reverse") scaleHelloTL.reverse();
@@ -66,24 +72,22 @@ function WelcomeSection() {
   };
 
   return (
-    <div
+    <section
       className="welcome-section"
-    // onMouseMove={event => moveNameonMouse(event, nameRef)}
+      // onMouseMove={event => moveNameonMouse(event, nameRef)}
     >
-      <div className="browser-content">
-        <h1>Arif Bashar.</h1>
-        <em>ah-reef &nbsp; &nbsp; bah-shar</em>
-        <p>
-          A human being (not a robot &#128559;) who took 3.5 years to become a
-          software engineer and realized that he really likes designing and
-          building beautiful applications in React and React Native.
-        </p>
+      <div className="browser">
+        <div ref={contentRef} className="content">
+          <h1>Arif Bashar.</h1>
+          <em>ah-reef &nbsp; &nbsp; bah-shar</em>
+          <p>
+            A human being (not a robot &#128559;) who took 3.5 years to become a
+            software engineer and realized that he really likes designing and
+            building beautiful a pplications in React and React Native.
+          </p>
+        </div>
       </div>
-      <div className="browser-svg">
-        <div className="floating-rectangle"></div>
-        <BrowserMock />
-      </div>
-    </div>
+    </section>
   );
 }
 

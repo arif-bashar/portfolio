@@ -21,7 +21,7 @@ function AboutSection() {
   `);
 
   return (
-    <div id="about" className="about-section">
+    <section id="about" className="about-section">
       <div className="inner-container">
         <div className="left-section">
           <div className="top-section">
@@ -55,14 +55,12 @@ function AboutSection() {
           </div>
         </div>
         <div className="right-section">
-          <div className="circle"></div>
-          <div className="image-filter"></div>
           <div className="profile-pic">
             <Img fluid={images.profile.childImageSharp.fluid} />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

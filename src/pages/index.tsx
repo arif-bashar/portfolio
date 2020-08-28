@@ -1,4 +1,6 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../slices/rootReducer";
 import "../styles/styles.scss";
 import { PageProps, graphql, useStaticQuery } from "gatsby";
 import BackgroundImage from "gatsby-background-image";
@@ -11,6 +13,7 @@ import WelcomeSection from "../components/sections/WelcomeSection";
 import Slide2 from "../components/sections/AboutSection";
 
 // Components
+import { wrapRootElement } from "../../gatsby-browser.js";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Image from "../components/image";
@@ -20,16 +23,20 @@ import { Puddle, Droplet } from "../components/SvgIcons";
 import IntroScreen from "../components/screens/IntroScreen";
 
 function IndexPage(props: PageProps) {
-  let rootRef = useRef<HTMLDivElement | null>(null);
   let containerRef = useRef<HTMLDivElement | null>(null);
-  let slidingRef = useRef<HTMLDivElement | null>(null);
   let mouseCursor = useRef<HTMLDivElement | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [slidingBG, setSlidingBG] = useState("paused");
 
-  const slidingTL = useMemo(() => gsap.timeline({ paused: true }), []);
+  const  { introDone } = useSelector((state: RootState) => state.intro);
 
-  let isScrolling: NodeJS.Timeout;
+  const [scrollPos, setScrollPos] = useState(window.scrollY);
+
+  const scrollHandler = (e: React.UIEvent<HTMLElement, UIEvent>) => {
+    let currentScrollPos = window.scrollY;
+    setScrollPos(currentScrollPos);
+    console.log(scrollPos);
+    console.log(containerRef.current.offsetTop);
+    console.log(e);
+  };
 
   const mouseCursorHandler = (event: MouseEvent) => {
     if (mouseCursor.current != null) {
@@ -46,11 +53,7 @@ function IndexPage(props: PageProps) {
     };
   }, []);
 
-
-  useEffect(() => {
-
-  }, []);
-
+  useEffect(() => {}, []);
 
   const images = useStaticQuery(graphql`
     query {
@@ -64,21 +67,21 @@ function IndexPage(props: PageProps) {
     }
   `);
 
-  return (
-    <>
-      {/* <div ref={rootRef} className="root"> */}
-      <IntroScreen rootRef={rootRef} />
-      <div ref={mouseCursor} className="cursor"></div>
-      <Header rootRef={rootRef} mouseCursor={mouseCursor} />
-      <main ref={containerRef}>
-        <WelcomeSection />
-        <AboutSection />
-        <ExperienceSection />
-      </main>
-      <Footer mouseCursor={mouseCursor} />
-      {/* </div> */}
-    </>
-  );
+    console.log(introDone);
+  if (introDone)
+    return (
+      <>
+        <div ref={mouseCursor} className="cursor"></div>
+        <Header mouseCursor={mouseCursor} />
+        <main onScroll={scrollHandler} ref={containerRef}>
+          <WelcomeSection />
+          <AboutSection />
+          <ExperienceSection />
+        </main>
+        <Footer mouseCursor={mouseCursor} />
+      </>
+    )
+  else return <IntroScreen />;
 }
 
 export default IndexPage;

@@ -19,6 +19,7 @@ $light: 300;
 
 html,
 body {
+
   font-family: $font;
   font-size: 16px;
   padding: 0;
@@ -26,12 +27,13 @@ body {
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: scroll;
   cursor: none;
   background: $primary;
   -webkit-font-smoothing: antialised;
-}
 
+
+}
 
 // Cursor
 .cursor {
@@ -46,6 +48,10 @@ body {
   transition-property: background, transform;
   transform-origin: 100% 100%;
   z-index: 11;
+
+  @include media("<=tablet") {
+    display: none;
+  }
 }
 
 .cursor-grow {
@@ -65,6 +71,7 @@ body {
   align-items: center;
   background: $accent;
   z-index: 15;
+  overflow: hidden;
 
   .droplet-container {
     z-index: 17;
@@ -104,7 +111,7 @@ body {
 header {
   height: 80px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0px;
   z-index: 10;
   .inner-header {
@@ -131,6 +138,9 @@ header {
       }
     }
     .navigation {
+      @include media("<=tablet") {
+        display: none;
+      }
       nav {
         a {
           margin: 0 80px;
@@ -162,8 +172,6 @@ main {
   font-family: "Cerebri Sans";
   width: 100%;
   height: 100%;
-  // position: absolute;
-  // display: block;
 
   // Welcome Section
   .welcome-section {
@@ -173,47 +181,69 @@ main {
     justify-content: center;
     align-items: center;
 
-    .browser-content {
-      position: relative;
-      width: 502px;
-      height: 223px;
-      left: -90px;
+    .browser {
       display: flex;
+      width: 1005px;
+      height: 517px;
       flex-direction: column;
-      z-index: 1;
-      h1 {
-        font-weight: $bold;
-        font-size: 5.6em;
-        color: $accent;
-      }
-      em {
-        font-weight: $light;
-        font-size: 14px;
-        color: $secondary;
-        margin-top: -2.5em;
-      }
-      p {
-        font-weight: $regular;
-        color: $secondary;
-        margin-top: 1em;
-      }
-    }
+      background-image: url("../images/browser-mock.svg");
+      background-repeat: no-repeat;
+      padding-left: 140px;
+      padding-top: 140px;
 
-    .browser-svg {
-      position: absolute;
+      @include media("<=tablet") {
+        width: 595px;
+        height: 458px;
+        background-image: url("../images/browser-mock-tablet.svg");
+        background-repeat: no-repeat;
+        padding-left: 50px;
+      }
 
-      .floating-rectangle {
-        width: 335px;
-        height: 250px;
-        background: $accent;
-        opacity: 0.1;
-        background-blend-mode: exclusion;
-        filter: blur(2px);
-        position: absolute;
-        right: -80px;
-        bottom: -80px;
-        z-index: 3;
-        border-radius: 5px;
+      @include media("<=phone") {
+        width: 314;
+        height: 380;
+        background-image: url("../images/browser-mock-phone.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-left: 50px;
+      }
+
+      .content {
+        width: 502px;
+        height: 223px;
+
+        @include media("<=tablet") {
+          width: 350px;
+        }
+
+        @include media("<=phone") {
+          width: 250px;
+        }
+
+        h1 {
+          font-weight: $bold;
+          font-size: 5.6em;
+          color: $accent;
+          margin-bottom: 0px;
+
+          @include media("<=tablet") {
+            font-size: 3.1em;
+          }
+
+          @include media("<=phone") {
+            font-size: 2em;
+          }
+        }
+        em {
+          font-weight: $light;
+          font-size: 14px;
+          color: $secondary;
+        }
+        p {
+          font-weight: $regular;
+          color: $secondary;
+          margin-top: 1em;
+        }
       }
     }
   }
@@ -228,7 +258,15 @@ main {
 
     .inner-container {
       display: flex;
+      width: 45%;
       flex-direction: row;
+
+      @include media("<=tablet") {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+        flex-direction: column;
+      }
 
       .left-section {
         display: flex;
@@ -289,7 +327,11 @@ main {
         }
 
         .mid-section {
-          width: 512px;
+          width: 100%;
+
+          @include media("<=tablet") {
+            width: 100%;
+          }
 
           p {
             font-size: 1em;
@@ -316,41 +358,23 @@ main {
       }
 
       .right-section {
-        margin-left: 20px;
-        top: 50px;
-        width: 272px;
-        height: 272px;
-        position: relative;
-
-        .image-filter {
-          width: 224px;
-          height: 224px;
-          position: absolute;
-          bottom: 0px;
-          left: 0px;
-          border-radius: 50%;
-          background: rgba(113, 88, 255, 0.42);
-          z-index: 2;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         .profile-pic {
           width: 224px;
           height: 224px;
-          position: absolute;
-          bottom: 0px;
-          left: 0px;
+          padding-right: 20px;
+          padding-top: 20px;
+          border-radius: 50%;
+          background-color: $tertiary;
+
 
           img {
+            display: block !important;
             border-radius: 50%;
           }
-        }
-
-        .circle {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          background: $tertiary;
-          border-radius: 50%;
         }
       }
     }
@@ -364,9 +388,19 @@ main {
     justify-content: center;
     align-items: center;
 
+
+
     .inner-container {
       display: flex;
+      width: 40%;
       flex-direction: row;
+
+      @include media("<=tablet") {
+        width: 100%;
+        padding-left: 30px;
+        padding-right: 30px;
+        flex-direction: column;
+      }
 
       .left-section {
         display: flex;
@@ -383,7 +417,7 @@ main {
         }
 
         .mid-section {
-          width: 400px;
+          width: 100%;
           display: flex;
           flex-direction: row;
           margin-bottom: 26px;
@@ -398,7 +432,7 @@ main {
         }
 
         .bottom-section {
-          width: 595px;
+          width: 100%;
 
           p {
             font-weight: $regular;
@@ -424,6 +458,12 @@ footer {
   position: fixed;
   bottom: 0px;
   z-index: 10;
+  display: none;
+
+  @include media("<=tablet") {
+    display: none;
+  }
+
   a {
     margin-left: 80px;
     text-decoration: none;

@@ -72,7 +72,7 @@ const mouseUpHandler = function() {
   `);
 
   return (
-    <div id="experience" className="experience-section">
+    <section id="experience" className="experience-section">
       <div className="inner-container">
         <div className="left-section">
           <div className="top-section">
@@ -105,7 +105,7 @@ const mouseUpHandler = function() {
         </div>
         <div className="right-section"></div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,16 +1,21 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import gsap from "gsap";
 import ReactDOM from "react-dom";
 
 // Components
 import { Puddle } from "../SvgIcons";
 import { Helmet } from "react-helmet";
+import { RootState } from "../../slices/rootReducer";
 
-type IntroScreenProps = {
-  rootRef: React.MutableRefObject<HTMLDivElement | null>;
-};
+// Actions
+import { setIntroDone } from "../../slices/introReducer";
+
+type IntroScreenProps = {};
 
 function IntroScreen(props: IntroScreenProps) {
+  const dispatch = useDispatch();
+
   let circleRef = useRef<HTMLDivElement | null>(null);
   let circleRef2 = useRef<HTMLDivElement | null>(null);
   let screenRef = useRef<HTMLDivElement | null>(null);
@@ -21,17 +26,16 @@ function IntroScreen(props: IntroScreenProps) {
   const dropletTL = useMemo(() => gsap.timeline({ delay: 1 }), []);
 
   // Lets us know whether the intro animation has completed or not
-  const [introDone, setIntroDone] = useState(false);
+  // const [introDone, setIntroDone] = useState(false);
 
   // Callback function after animation completes to update introDone variable
-  const onIntroDone = () => {
-    document.body.style.overflowY = "scroll";
-    // if (props.rootRef.current != null)
-    //   props.rootRef.current!.style.display = "block";
-    setTimeout(() => {
-      setIntroDone(true);
-    }, 500);
-  };
+  // const onIntroDone = () => {
+  //   setTimeout(() => {
+  //     // document.body.style.overflowY = "scroll";
+  //     // setIntroDone(true);
+  //     dispatch(setIntroDone());
+  //   }, 500);
+  // };
 
   /* Droplet + Screen Fill Animation on Load:
      The idea is to animate a droplet falling down onto a puddle, soaking up
@@ -46,9 +50,6 @@ function IntroScreen(props: IntroScreenProps) {
     });
 
     // Prevent scroll during intro animation
-    // if (props.rootRef.current != null)
-    //   props.rootRef.current.style.display = "none";
-
     // document.body.style.overflowY = "hidden";
 
     // Droplet falls down onto the puddle
@@ -120,58 +121,46 @@ function IntroScreen(props: IntroScreenProps) {
           duration: 1.5,
           opacity: 0,
           ease: "power3.easeOut",
-          onComplete: () => onIntroDone(),
+          onComplete: () => dispatch(setIntroDone())
         },
         ">"
-      )
-      .to(
-        props.rootRef.current,
-        {
-          display: "block",
-        },
-        "<.5"
-      )
-      .from(
-        props.rootRef.current,
-        {
-          duration: 0.5,
-          opacity: 0,
-        },
-        "<"
       );
-  }, [dropletTL]);
 
-  if (!introDone) {
-    return (
-      <>
-        {/* <Helmet bodyAttributes={{ class: `hidden`}} /> */}
-        <div ref={screenRef} className="intro-screen">
-          <div className="droplet-container">
-            <div ref={circleRef} className="circle-expand"></div>
-            <div ref={circleRef2} className="circle-expand2"></div>
-            <svg
-              opacity="0"
-              ref={dropletSVG}
-              width="34"
-              height="67"
-              viewBox="0 0 34 67"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                ref={dropletPath}
-                d="M34 45.2133C34 57.2458 26.3888 67 17 67C7.61116 67 0 57.2458 0 45.2133C0 33.1808 7.61116 0 17 0C26.3888 0 34 33.1808 34 45.2133Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-          <div className="puddle-container">
-            <Puddle />
-          </div>
+    return () => {
+      dropletTL.kill();
+    };
+  }, []);
+
+  useEffect(() => {}, []);
+
+  return (
+    <>
+      <div ref={screenRef} className="intro-screen">
+        <div className="droplet-container">
+          <div ref={circleRef} className="circle-expand"></div>
+          <div ref={circleRef2} className="circle-expand2"></div>
+          <svg
+            opacity="0"
+            ref={dropletSVG}
+            width="34"
+            height="67"
+            viewBox="0 0 34 67"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              ref={dropletPath}
+              d="M34 45.2133C34 57.2458 26.3888 67 17 67C7.61116 67 0 57.2458 0 45.2133C0 33.1808 7.61116 0 17 0C26.3888 0 34 33.1808 34 45.2133Z"
+              fill="white"
+            />
+          </svg>
         </div>
-      </>
-    );
-  } else return null;
+        <div className="puddle-container">
+          <Puddle />
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default IntroScreen;
