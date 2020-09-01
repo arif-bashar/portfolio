@@ -1,5 +1,70 @@
 import * as React from "react";
 
+export function XButton(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width={15} height={15} viewBox="0 0 15 15" fill="none" {...props}>
+      <path
+        d="M11.25 3.75l-7.5 7.5M3.75 3.75l7.5 7.5"
+        stroke="#fff"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function LeftArrow(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      style={{ marginRight: 6 }}
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      {...props}
+    >
+      <path
+        d="M19 12H5M12 19l-7-7 7-7"
+        stroke="#504CFF"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function LockIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width={13} height={13} viewBox="0 0 13 13" fill="none" {...props}>
+      <g
+        opacity={0.4}
+        stroke="#fff"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M10.292 5.958H2.708c-.598 0-1.083.485-1.083 1.084v3.791c0 .599.485 1.084 1.083 1.084h7.584c.598 0 1.083-.485 1.083-1.084V7.042c0-.599-.485-1.084-1.083-1.084zM3.792 5.958V3.792a2.708 2.708 0 015.416 0v2.166" />
+      </g>
+    </svg>
+  );
+}
+
+export function RightArrow(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg width={24} height={24} viewBox="0 0 24 24" fill="none" {...props}>
+      <g
+        opacity={0.3}
+        stroke="#504CFF"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </g>
+    </svg>
+  );
+}
+
 export function Droplet(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg width={34} height={67} viewBox="0 0 34 67" fill="none" {...props}>
@@ -34,7 +99,7 @@ export function Droplet(props: React.SVGProps<SVGSVGElement>) {
         </filter>
       </defs>
     </svg>
-  )
+  );
 }
 
 export function Puddle(props: React.SVGProps<SVGSVGElement>) {

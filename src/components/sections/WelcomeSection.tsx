@@ -1,12 +1,18 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import gsap from "gsap";
 import { Transition } from "react-transition-group";
-import { BrowserMock } from "../SvgIcons";
+import {
+  BrowserMock,
+  XButton,
+  LeftArrow,
+  RightArrow,
+  LockIcon,
+} from "../SvgIcons";
 
 function WelcomeSection() {
   let contentRef = useRef<HTMLDivElement>(null);
   let nameRef = useRef<HTMLHeadingElement>(null);
-  let proRef = useRef<HTMLElement>(null);
+  let proRef = useRef<HTMLDivElement>(null);
   let defRef = useRef<HTMLParagraphElement>(null);
   let helloRef = useRef<SVGSVGElement | null>(null);
   let pathRef = useRef<SVGPathElement | null>(null);
@@ -17,15 +23,16 @@ function WelcomeSection() {
 
   // Calls name entrance animation after page load
   useEffect(() => {
-    gsap.from(contentRef.current, {
+    gsap.from([nameRef.current, proRef.current, defRef.current], {
       delay: 0.2,
+      stagger: 0.1,
       duration: 1,
       opacity: 0,
       y: 20,
-      ease: "power3.easeIn"
+      skewY: 2,
+      ease: "power3.easeIn",
     });
   }, []);
-
 
   // Name moves in direction of mouse
   const moveNameonMouse = (
@@ -48,12 +55,29 @@ function WelcomeSection() {
       // onMouseMove={event => moveNameonMouse(event, nameRef)}
     >
       <div className="browser">
+        <div className="browser-top">
+          <div className="red-close"></div>
+          <div className="yellow-minimize"></div>
+          <div className="green-maximize"></div>
+          <span>define arif bashar - Google Search</span>
+          <XButton />
+        </div>
+        <div className="browser-navigation">
+          <LeftArrow />
+          <RightArrow />
+          <div className="address-bar">
+            <LockIcon />
+            <div className="address-text">
+              google.com/search?q=define+arif+bashar+&ggs_lcp=CffjgEqkfAzD...
+            </div>
+          </div>
+        </div>
         <div ref={contentRef} className="content">
           <h1 ref={nameRef}>Arif Bashar.</h1>
-          <em ref={proRef}>ah-reef &nbsp; &nbsp; bah-shar</em>
+          <div className="pro-text" ref={proRef}>ah-reef &nbsp; &nbsp; bah-shar</div>
           <p ref={defRef}>
-            A human being (not a robot &#128559;) who took 3.5 years to become a
-            software engineer and realized that he really likes designing and
+            A human being (not a robot &#128559;) who spent 3.5 years in school
+            to become a software engineer and really likes designing and
             building beautiful applications in React and React Native.
           </p>
         </div>

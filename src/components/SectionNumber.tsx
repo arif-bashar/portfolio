@@ -2,12 +2,15 @@ import * as React from "react";
 import { DotGrid } from "../components/SvgIcons";
 
 type SectionNumberProps = {
-  num: string
+  num: string;
 };
 
 function SectionNumber(props: SectionNumberProps) {
+
   return (
-    <div className="number-container">
+    <div
+      className="number-container"
+    >
       <div className="square"></div>
       <div className="number">
         <strong>{props.num}</strong>

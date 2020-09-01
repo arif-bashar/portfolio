@@ -10,7 +10,7 @@ function MenuButton(props: MenuButtonProps) {
     <div
       className="menu-button"
       style={{
-        background: props.active ? "#504CFF" : "#2d255b",
+        background: props.active ? "#221C47" : "#rgba(34,28,71,0.4)",
         color: props.active ? "white" : "rgba(255, 255, 255, 0.5)",
       }}
       // onMouseOver

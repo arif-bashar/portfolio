@@ -80,15 +80,15 @@ function Header(props: HeaderProps) {
     showHeaderTL.to([aboutRef.current, expRef.current, projectsRef.current], {
       duration: 0.1,
       stagger: 0.07,
-      x: 20,
-      background: "#afa1ff",
+      x: 10,
+      // background: "#afa1ff",
       opacity: 0,
       ease: "power3.easeOut",
     }).to(logoRef.current, {
       duration: 0.1,
       color: "red",
       x: 5,
-      skewY: 2,
+      skewY: 1,
       opacity: 0
     }, "<")
   }, []);
