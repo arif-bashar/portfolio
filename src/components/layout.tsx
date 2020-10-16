@@ -9,8 +9,11 @@ import Footer from "./footer";
 import WelcomeSection from "./sections/WelcomeSection";
 import AboutSection from "./sections/AboutSection";
 import ExperienceSection from "./sections/ExperienceSection";
+import ProjectsSection from "./sections/ProjectsSection";
 
 function Layout() {
+  const [scrollPos, setScrollPos] = useState(window.scrollY);
+
   let rootRef = useRef<HTMLDivElement | null>(null);
   let containerRef = useRef<HTMLDivElement | null>(null);
   let mouseCursor = useRef<HTMLDivElement | null>(null);
@@ -22,7 +25,15 @@ function Layout() {
     }
   };
 
+  // const scrollHandler = (e: Event) => {
+  //   const newScrollPos = window.scrollY;
+  //   console.log(scrollPos);
+
+  //   setScrollPos(newScrollPos);
+  // };
+
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     window.addEventListener("mousemove", mouseCursorHandler);
 
     return () => {
@@ -30,10 +41,36 @@ function Layout() {
     };
   }, []);
 
+  // useEffect(() => {
+  //   window.addEventListener("scroll", scrollHandler);
+  //   return () => {
+  //     window.removeEventListener("scroll", scrollHandler);
+  //   };
+  // }, [scrollPos]);
+
   useEffect(() => {
     gsap.to(rootRef.current, {
       duration: 1,
       opacity: 1,
+    });
+  }, []);
+
+  useEffect(() => {
+    gsap.set(".tracking-circle", {
+      opacity: 0,
+    })
+
+    gsap.to(".tracking-circle", {
+      duration: 0.3,
+      scaleX: .5,
+      scaleY: .5,
+      opacity: 1,
+      scrollTrigger: {
+        trigger: ".empty-div",
+        // end: "+=500",
+        // markers: true,
+        scrub: true,
+      }
     })
   }, []);
 
@@ -51,12 +88,17 @@ function Layout() {
 
   return (
     <div ref={rootRef} className="root">
+      {/* <div className="tracking-circle-container">
+        <div className="tracking-circle"></div>
+      </div> */}
       <div ref={mouseCursor} className="cursor"></div>
       <Header mouseCursor={mouseCursor} />
       <main ref={containerRef}>
         <WelcomeSection />
+        {/* <div className="empty-div"></div> */}
         <AboutSection />
         <ExperienceSection />
+        <ProjectsSection />
       </main>
       <Footer mouseCursor={mouseCursor} />
     </div>

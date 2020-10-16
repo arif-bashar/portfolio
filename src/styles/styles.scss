@@ -227,6 +227,29 @@ header {
   opacity: 0;
 }
 
+.tracking-circle-container {
+  width: 100%;
+  display: flex;
+  position: absolute;
+
+  .tracking-circle {
+    width: 20px;
+    height: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $secondary;
+    border-radius: 50%;
+    transform-origin: 50% 50%;
+  }
+}
+
+.empty-div {
+  width: 100%;
+  height: 100vh;
+}
+
 main {
   section {
     display: flex;
@@ -331,7 +354,6 @@ main {
       padding-left: 142px;
       padding-right: 361px;
       // max-height: 142px;
-
     }
 
     .pro-text {
@@ -394,7 +416,7 @@ main {
   }
 }
 
-// Bottom section for all sectiion containers
+// Bottom section for all section containers
 .bottom-section {
   display: flex;
   flex-direction: column;
@@ -495,6 +517,55 @@ main {
 
 .exp-mid-section::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
+}
+
+.projects-table {
+  width: 100%;
+  border: none;
+  border-spacing: 1em;
+
+  tr {
+    
+  }
+
+  th {
+    text-align: left;
+    font-size: 1em;
+    color: $clearWhite;
+    padding-bottom: 1em;
+    
+  }
+
+  td {
+    color: $clearWhite;
+    padding-bottom: 1em;
+  }
+
+  @include media("<=768px") {
+    td:nth-child(2),
+    td:nth-child(3) {
+      display:none;
+    }
+
+    th:nth-child(2),
+    th:nth-child(3) {
+      display:none;
+    }
+  }
+
+  .project-name {
+    width: 280px;
+    font-weight: $bold;
+    color: $accent;
+  }
+
+  .project-tech {
+    width: 335px;
+  }
+
+  .project-desc {
+    // background: $secondary;
+  }
 }
 
 // Footer
