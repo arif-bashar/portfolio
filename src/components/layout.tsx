@@ -12,8 +12,6 @@ import ExperienceSection from "./sections/ExperienceSection";
 import ProjectsSection from "./sections/ProjectsSection";
 
 function Layout() {
-  const [scrollPos, setScrollPos] = useState(window.scrollY);
-
   let rootRef = useRef<HTMLDivElement | null>(null);
   let containerRef = useRef<HTMLDivElement | null>(null);
   let mouseCursor = useRef<HTMLDivElement | null>(null);
@@ -25,13 +23,6 @@ function Layout() {
     }
   };
 
-  // const scrollHandler = (e: Event) => {
-  //   const newScrollPos = window.scrollY;
-  //   console.log(scrollPos);
-
-  //   setScrollPos(newScrollPos);
-  // };
-
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     window.addEventListener("mousemove", mouseCursorHandler);
@@ -40,13 +31,6 @@ function Layout() {
       window.removeEventListener("mousemove", mouseCursorHandler);
     };
   }, []);
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", scrollHandler);
-  //   return () => {
-  //     window.removeEventListener("scroll", scrollHandler);
-  //   };
-  // }, [scrollPos]);
 
   useEffect(() => {
     gsap.to(rootRef.current, {
