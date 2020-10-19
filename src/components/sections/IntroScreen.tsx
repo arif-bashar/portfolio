@@ -135,6 +135,9 @@ function IntroScreen(props: IntroScreenProps) {
 
   return (
     <>
+      <Helmet>
+        <title>Arif Bashar</title>
+      </Helmet>
       <div ref={screenRef} className="intro-screen">
         <div className="droplet-container">
           <div ref={circleRef} className="circle-expand"></div>
