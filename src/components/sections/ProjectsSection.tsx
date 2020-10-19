@@ -36,7 +36,7 @@ function ProjectsSection() {
             <td className="project-name">Spacejam</td>
             <td>2020</td>
             <td className="project-tech">React Native, Redux, TypeScript</td>
-            <td>Git</td>
+            <td><a href="https://github.com/arif-bashar/spacejam" target="_blank">Git</a></td>
           </tr>
           {/* <tr>
             <td colSpan={4} className="project-desc">
@@ -51,7 +51,7 @@ function ProjectsSection() {
             <td className="project-name">GoonBot</td>
             <td>2020</td>
             <td className="project-tech">Node.js, Discord.js, TypeScript</td>
-            <td>Git</td>
+            <td><a href="https://github.com/arif-bashar/goon-bot" target="_blank">Git</a></td>
           </tr>
           {/* <tr>
             <td colSpan={4} className="project-desc">

@@ -540,6 +540,26 @@ main {
   td {
     color: $clearWhite;
     padding-bottom: 1em;
+
+    a {
+      font-weight: $bold;
+      color: $accent;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        text-decoration: underline;
+        transition: 0.3s ease-in-out;
+      }
+
+      &:hover:after {
+        content: "•";
+        color: #ff8282;
+        position: absolute;
+        margin-left: 5px;
+        transition: 0.3s ease-in-out;
+      }
+    }
   }
 
   @include media("<=768px") {
