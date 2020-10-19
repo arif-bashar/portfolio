@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import gsap, { TimelineMax } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Helmet } from "react-helmet";
 import "../styles/styles.scss";
 
 // Components
@@ -72,6 +73,9 @@ function Layout() {
 
   return (
     <div ref={rootRef} className="root">
+      <Helmet>
+        <title>Arif Bashar</title>
+      </Helmet>
       {/* <div className="tracking-circle-container">
         <div className="tracking-circle"></div>
       </div> */}

@@ -24,7 +24,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/website-icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-sass`,
@@ -32,8 +32,8 @@ module.exports = {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         custom: {
-          families: ["Akkurat"],
-          urls: ["fonts/fonts.scss"],
+          families: ["Akkurat", "Cerebri Sans"],
+          urls: ["src/fonts/fonts.scss"],
         },
       },
     },
@@ -43,6 +43,13 @@ module.exports = {
         rule: {
           include: /svgs/
         }
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: "fonts",
+        path: `${__dirname}/src/fonts/`
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
