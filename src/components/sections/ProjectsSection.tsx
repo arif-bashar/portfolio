@@ -36,7 +36,11 @@ function ProjectsSection() {
             <td className="project-name">Spacejam</td>
             <td>2020</td>
             <td className="project-tech">React Native, Redux, TypeScript</td>
-            <td><a href="https://github.com/arif-bashar/spacejam" target="_blank">Git</a></td>
+            <td>
+              <a href="https://github.com/arif-bashar/spacejam" target="_blank">
+                Git
+              </a>
+            </td>
           </tr>
           {/* <tr>
             <td colSpan={4} className="project-desc">
@@ -48,10 +52,14 @@ function ProjectsSection() {
             </td>
           </tr> */}
           <tr>
-            <td className="project-name">GoonBot</td>
+            <td className="project-name">Discord Bot</td>
             <td>2020</td>
             <td className="project-tech">Node.js, Discord.js, TypeScript</td>
-            <td><a href="https://github.com/arif-bashar/goon-bot" target="_blank">Git</a></td>
+            <td>
+              <a href="https://github.com/arif-bashar/goon-bot" target="_blank">
+                Git
+              </a>
+            </td>
           </tr>
           {/* <tr>
             <td colSpan={4} className="project-desc">
@@ -62,6 +70,19 @@ function ProjectsSection() {
               'emotion' of the particular user.
             </td>
           </tr> */}
+          <tr>
+            <td className="project-name">Lab Scheduler</td>
+            <td>2020</td>
+            <td className="project-tech">Node.js, React.js</td>
+            <td>
+              <a href="https://github.com/arif-bashar/gta-scheduler" target="_blank">
+                Git
+              </a>
+              <a href="https://gtascheduler.netlify.app/" target="_blank">
+                Live
+              </a>
+            </td>
+          </tr>
         </table>
       </div>
       <div className="bottom-section"></div>
