@@ -77,7 +77,7 @@ function ProjectsSection() {
             <td>
               <a href="https://github.com/arif-bashar/gta-scheduler" target="_blank">
                 Git
-              </a>
+              </a> &nbsp; &nbsp;
               <a href="https://gtascheduler.netlify.app/" target="_blank">
                 Live
               </a>
