@@ -1,0 +1,39 @@
+@import "../variables/index";
+@import "../../breakpoints/breakpoints";
+
+h1 {
+  height: 48px;
+  font-size: 3em;
+  font-weight: $bold;
+  color: $secondary;
+  margin-bottom: 5px;
+  white-space: nowrap;
+
+  @include media(">768px") {
+    font-size: 5.6em;
+    height: 89.6px;
+  }
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: $bold;
+  color: $accent;
+
+  @include media(">768px") {
+    font-size: 3.1em;
+  }
+}
+
+h3 {
+  height: 20.8px;
+  font-size: 1.3em;
+  font-weight: $regular;
+  color: $clearWhite;
+}
+
+li,
+p {
+  font-size: 14px;
+}
+

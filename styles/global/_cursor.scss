@@ -1,0 +1,28 @@
+@import "../variables/index";
+@import "../../breakpoints/breakpoints";
+
+// Cursor
+.cursor {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid $accent;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  transition-property: background, transform;
+  transform-origin: 100% 100%;
+  z-index: 11;
+
+  @include media("<=tablet") {
+    display: none;
+  }
+}
+
+.cursor-grow {
+  transform: scale(2);
+  background: $accent;
+  z-index: 9;
+}
+

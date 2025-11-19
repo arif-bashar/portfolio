@@ -1,0 +1,59 @@
+@import "../../styles/variables/index";
+@import "../../breakpoints/breakpoints";
+
+.profilePic {
+  margin-left: 10px;
+
+  @include media(">768px") {
+    margin-left: 20px;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+
+    @include media(">768px") {
+      width: 50px;
+      height: 50px;
+    }
+
+    border-radius: 50%;
+  }
+}
+
+.aboutMidSection {
+  font-size: 14px;
+  color: $white;
+
+  @include media(">768px") {
+    max-width: 512px;
+  }
+
+  p {
+    color: $clearWhite;
+    margin-bottom: 30px;
+
+    @include media(">768px") {
+      margin-bottom: 45px;
+    }
+
+    a {
+      text-decoration: none;
+      color: $white;
+      font-weight: $bold;
+    }
+  }
+}
+
+.techStack {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+
+  @include media(">768px") {
+    margin-bottom: 50px;
+  }
+
+  flex-wrap: wrap;
+}
+

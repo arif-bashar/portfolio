@@ -1,0 +1,19 @@
+@import "../variables/index";
+@import "../../breakpoints/breakpoints";
+
+main {
+  section {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+
+    @include media("<=tablet") {
+      padding: 80px 0;
+      min-height: auto;
+    }
+  }
+}
+

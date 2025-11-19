@@ -1,0 +1,50 @@
+@import "../../styles/variables/index";
+@import "../../breakpoints/breakpoints";
+
+.introScreen {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $secondary;
+  z-index: 15;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.dropletContainer {
+  z-index: 17;
+}
+
+.circleExpand {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background: $primary;
+  border-radius: 50%;
+  margin-bottom: 17px;
+  margin-left: 7px;
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+.circleExpand2 {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background: rgba(34, 28, 71, 0.2);
+  border-radius: 50%;
+  margin-top: -37px;
+  margin-left: 7px;
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+.puddleContainer {
+  position: relative;
+  top: 90px;
+  z-index: 16;
+}

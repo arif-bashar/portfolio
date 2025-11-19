@@ -1,0 +1,86 @@
+@import "../../styles/variables/index";
+@import "../../breakpoints/breakpoints";
+
+.projectsTable {
+  width: 100%;
+  border: none;
+  border-spacing: 0.5em;
+
+  @include media(">768px") {
+    border-spacing: 1em;
+  }
+
+  th {
+    text-align: left;
+    font-size: 0.9em;
+
+    @include media(">768px") {
+      font-size: 1em;
+    }
+
+    color: $clearWhite;
+    padding-bottom: 1em;
+  }
+
+  td {
+    color: $clearWhite;
+    padding-bottom: 1em;
+    font-size: 0.85em;
+
+    @include media(">768px") {
+      font-size: 1em;
+    }
+
+    a {
+      font-weight: $bold;
+      color: $accent;
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        text-decoration: underline;
+        transition: 0.3s ease-in-out;
+      }
+
+      &:hover:after {
+        content: "•";
+        color: #ff8282;
+        position: absolute;
+        margin-left: 5px;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+
+  @include media("<=768px") {
+    td:nth-child(2),
+    td:nth-child(3) {
+      display: none;
+    }
+
+    th:nth-child(2),
+    th:nth-child(3) {
+      display: none;
+    }
+  }
+}
+
+.projectName {
+  width: auto;
+
+  @include media(">768px") {
+    width: 280px;
+  }
+
+  font-weight: $bold;
+  color: $accent;
+}
+
+.projectTech {
+  width: auto;
+
+  @include media(">768px") {
+    width: 335px;
+  }
+}
+

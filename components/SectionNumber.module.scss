@@ -1,0 +1,53 @@
+@import "../styles/variables/index";
+@import "../breakpoints/breakpoints";
+
+.numberContainer {
+  width: 39px;
+  height: 39px;
+  position: relative;
+  align-self: flex-end;
+}
+
+.square {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background: $white;
+  background-blend-mode: difference;
+}
+
+.number {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  justify-content: center;
+  align-items: center;
+
+  strong {
+    font-size: 0.9em;
+
+    @include media(">768px") {
+      font-size: 1em;
+    }
+
+    opacity: 1;
+    color: $secondary;
+    z-index: 3;
+  }
+}
+
+.dotGridSvg {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0px;
+}
+
