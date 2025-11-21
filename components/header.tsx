@@ -1,100 +1,102 @@
-'use client'
+"use client";
 
-import { useEffect, useState, useRef } from 'react'
-import Link from 'next/link'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import styles from './header.module.scss'
+import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import styles from "./header.module.scss";
 
 type HeaderProps = {
-  mouseCursor: React.MutableRefObject<HTMLDivElement | null>
-}
+  mouseCursor: React.MutableRefObject<HTMLDivElement | null>;
+};
 
 export default function Header({ mouseCursor }: HeaderProps) {
-  const [logoHovered, setLogoHovered] = useState(false)
-  const [animStatus, setAnimStatus] = useState<'play' | 'reverse' | 'pause'>('pause')
-  const [scrollPos, setScrollPos] = useState(0)
+  const [logoHovered, setLogoHovered] = useState(false);
+  const [animStatus, setAnimStatus] = useState<"play" | "reverse" | "pause">(
+    "pause"
+  );
+  const [scrollPos, setScrollPos] = useState(0);
 
-  const headerRef = useRef<HTMLElement>(null)
-  const logoRef = useRef<HTMLDivElement>(null)
-  const aboutRef = useRef<HTMLDivElement>(null)
-  const expRef = useRef<HTMLDivElement>(null)
-  const projectsRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const expRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
 
-  const showHeaderTL = useRef<gsap.core.Timeline | null>(null)
+  const showHeaderTL = useRef<gsap.core.Timeline | null>(null);
 
   const logoStyleProps = {
-    color: 'white',
-  }
+    color: "white",
+  };
 
   const onHoverLinks = () => {
-    mouseCursor.current?.classList.add('cursor-grow')
-  }
+    mouseCursor.current?.classList.add("cursor-grow");
+  };
 
   const onHoverLogo = () => {
-    mouseCursor.current?.classList.add('cursor-grow')
-    setLogoHovered(true)
-  }
+    mouseCursor.current?.classList.add("cursor-grow");
+    setLogoHovered(true);
+  };
 
   const onLeaveLogo = () => {
-    mouseCursor.current?.classList.remove('cursor-grow')
-    setLogoHovered(false)
-  }
+    mouseCursor.current?.classList.remove("cursor-grow");
+    setLogoHovered(false);
+  };
 
   const onLeaveLinks = () => {
-    mouseCursor.current?.classList.remove('cursor-grow')
-    setLogoHovered(false)
-  }
+    mouseCursor.current?.classList.remove("cursor-grow");
+    setLogoHovered(false);
+  };
 
   const scrollHandler = () => {
-    const newScrollPos = window.scrollY
+    const newScrollPos = window.scrollY;
 
     if (newScrollPos > scrollPos) {
-      setAnimStatus('play')
+      setAnimStatus("play");
     } else {
-      setAnimStatus('reverse')
+      setAnimStatus("reverse");
     }
 
-    setScrollPos(newScrollPos)
-  }
+    setScrollPos(newScrollPos);
+  };
 
   useGSAP(() => {
-    showHeaderTL.current = gsap.timeline({ paused: true })
+    showHeaderTL.current = gsap.timeline({ paused: true });
     showHeaderTL.current
       .to([aboutRef.current, expRef.current, projectsRef.current], {
         duration: 0.1,
         stagger: 0.07,
         y: -10,
         opacity: 0,
-        ease: 'power3.easeOut',
+        ease: "power3.easeOut",
       })
       .to(
         logoRef.current,
         {
           duration: 0.1,
-          color: 'red',
+          color: "red",
           y: -5,
           skewY: 1,
           opacity: 0,
         },
-        '<'
-      )
-  }, [])
+        "<"
+      );
+  }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', scrollHandler)
+    window.addEventListener("scroll", scrollHandler);
     return () => {
-      window.removeEventListener('scroll', scrollHandler)
-    }
-  }, [scrollPos])
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, [scrollPos]);
 
   useEffect(() => {
-    if (animStatus === 'play' && showHeaderTL.current) {
-      showHeaderTL.current.play()
-    } else if (animStatus === 'reverse' && showHeaderTL.current) {
-      showHeaderTL.current.reverse()
+    if (animStatus === "play" && showHeaderTL.current) {
+      showHeaderTL.current.play();
+    } else if (animStatus === "reverse" && showHeaderTL.current) {
+      showHeaderTL.current.reverse();
     }
-  }, [animStatus])
+  }, [animStatus]);
 
   return (
     <header ref={headerRef} className={styles.header}>
@@ -145,6 +147,5 @@ export default function Header({ mouseCursor }: HeaderProps) {
         </div>
       </div>
     </header>
-  )
+  );
 }
-

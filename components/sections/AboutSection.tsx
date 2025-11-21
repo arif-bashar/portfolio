@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
-import { useRef } from 'react'
-import Image from 'next/image'
-import Tag from '../Tag'
-import SectionNumber from '../SectionNumber'
-import moveNumElement from '@/animations/moveNumElement'
-import styles from './AboutSection.module.scss'
-import sectionStyles from '../../styles/modules/sections.module.scss'
+import { useRef } from "react";
+import Image from "next/image";
+import Tag from "../Tag";
+import SectionNumber from "../SectionNumber";
+import moveNumElement from "@/animations/moveNumElement";
+import styles from "./AboutSection.module.scss";
+import sectionStyles from "../../styles/modules/sections.module.scss";
 
 export default function AboutSection() {
-  const titleRef = useRef<HTMLHeadingElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   return (
     <section
-      onMouseMove={(event) => moveNumElement(event)}
+      onMouseMove={event => moveNumElement(event)}
       id="about"
       className="about-section"
     >
@@ -22,11 +22,11 @@ export default function AboutSection() {
           <h2 ref={titleRef}>About Me</h2>
           <div className={styles.profilePic}>
             <Image
-              src="/images/profile-pic.jpg"
+              src="/images/profile-headshot.jpg"
               alt="Profile"
               width={50}
               height={50}
-              style={{ borderRadius: '50%' }}
+              style={{ borderRadius: "50%" }}
             />
           </div>
         </div>
@@ -58,6 +58,5 @@ export default function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
